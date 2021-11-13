@@ -14,11 +14,11 @@ Here I implement the Lorenz equations:
 
 <p><span class="math display">\[x_t = \sigma (y - x), y_t = \rho x - y - xz, z_t = xy - \beta z\]</span></p> 
 
-where <i>x_t<i> indicates the derivative of <i>x<i> wrt <i>t<i> and sigma, rho, and beta are constants. 
+where x_t indicates the derivative of x with respect to t, and σ, ρ, and β are constants. 
 
-For appropriately chosen values of $\sigma, \rho,$ and $\beta$ the solutions did not tend to a fixed pooint, nor did the system tend to toward infnity either - there was chaotic behavior, and the system exhibited a "strange attractor."
+For appropriately chosen values of σ, ρ, and β, the solutions did not tend to a fixed point, nor did the system tend to toward infnity either. This phenomena came to be called chaotic behavior, and the system exhibited a "strange attractor" that solutions converrged to. 
 
-Here we'll let $\sigma = 10$, $\rho = 28$, $\beta = 8$ and use `scipy.integrate.odeint` to compute the solution.
+Here we'll let σ=10, ρ=28, and β=8/3 and use `scipy.integrate.odeint` to compute the solution.
 
 ```python 
 def lorenz(t, x):
@@ -76,7 +76,7 @@ ax.set_zlabel("z")
 
 for i in range(3): 
 
-    # randomllly initial values 
+    # random initial values 
     initial_vals = np.random.uniform(-15, 15, (3, ))  
 
     # solve the ODE 
@@ -101,7 +101,7 @@ dierence between two solution curves, when δ(t) is small, the following approx
 
 <p><span class="math display">\[||\delta(t)|| ∼ ||\delta(0)|| e^{\lambda t}\]</span></p>  
 
-where lambda is a constant called the Lyapunov exponent. In other words, the log of delta <i>t<i> is approximately <i>linear<i> as a function of time, with slope lambda, so we can estimate this through linear regression.
+where lambda is a constant called the Lyapunov exponent. In other words, the log of delta t is approximately linear as a function of time, with slope lambda, so we can estimate this through linear regression. A positive Lyapunov exponent indicates chaos is present in the system. 
 
 ```python
 # init solution to find point in attractor 
