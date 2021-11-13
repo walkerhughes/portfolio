@@ -11,6 +11,12 @@ While we may not know the direction the market is going, pairs trading allows us
 
 <img src="pairs_trade_exploration.jpg" width="1100" height="500">
 
+In the first visual, we have the cumulative percentage returns for each asset for the week of November 8 through November 12 of 2021. Clearly, both assets closed the week for a loss (this week there was a particularly poor inflation reading of 6.2%). 
+
+The second visual plots the spread between the cumulative percentage returns, or the cumulative percentage returns for 3/M2K contracts minus the cumulative percentage returns for 2/MNQ contracts. This looks like it may be normally distributed, but we’ll explore this further below. 
+
+The third visual plots the P/L (profit vs. losses) for longing 3/M2K contracts and shorting 2/MNQ contracts and holding that trade through the entire week. 
+
 <img src="spread_normality.jpg" width="1100" height="425">
 
 <img src="z_scores_moving_averages.jpg" width="1100" height="425">
