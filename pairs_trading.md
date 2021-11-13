@@ -13,11 +13,11 @@ What's nice about pairs trades is that they rely only on the correlation between
 
 Pairs trades 
 
-<img src="pairs_trade_exploration.jpg" width="900" height="450">
+<img src="pairs_trade_exploration.jpg" width="1100" height="500">
 
-<img src="spread_normality.jpg" width="1100" height="375">
+<img src="spread_normality.jpg" width="1100" height="425">
 
-<img src="z_scores_moving_averages.jpg" width="1100" height="375">
+<img src="z_scores_moving_averages.jpg" width="1100" height="425">
 
-<img src="final_trade_signals.jpg" width="1100" height="250"> 
+<img src="final_trade_signals.jpg" width="1100" height="300"> 
 

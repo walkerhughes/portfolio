@@ -14,7 +14,7 @@ While this is an inherently high dimenional problem, image segmentation provides
 The Sentinel Satellite orbits the earth and takes multispectral images of the planet. These images are high dimensional and contain far more chanels than just Red, Green, and Blue. Let's take a look at the atmospheric channels from a Sentinel Satellite image of this fire. These channels essentially filter through the smoke that would normally occlude an RGB image taken from above, and this allows us to more cllearly view the burned areas. 
 
 Center Creek Trail Fire, burned areas are in orange [Source: Sentinel Satellite] 
-<img src="center_creek_burn.jpg" width="750" height="500">   
+<img src="center_creek_burn.jpg" width="750" height="750">   
 
 While we could feasibly use something like a floodfill algorithm at the pixel-color level to determine the perimeter, not all wildfires burn in convex shapes and there are often burned areas not at all connected to the main body of the burn. A lot of images contain unneeded noise (random changes in pixel intensity or brightness) that just aren't neceessary. Image segmentation with additional image filtering is a straightforward way to address this. 
 
@@ -27,7 +27,7 @@ Gaussian Convolution Function
 <p><span class="math display">\[ G(x, y) = \frac{1}{2 \pi \sigma^2} e ^ {-\frac{x^2 + y^2}{2 \sigma^2}} \]</span></p> 
 
 Gaussian blurred image
-<img src="gaussian_blur_std_8_new.jpg" width="750" height="500">      
+<img src="gaussian_blur_std_8_new.jpg" width="750" height="750">      
 
 We will also use Laplace filtering to emphasize the contrast between pixel intensities. The Laplace filter is a measure of the second spatial derivative on a 2D image and is useful for identifying such areas of rapid pixel intensity changes. This emphasizes fire perimeters clearly in our images. 
  
@@ -38,14 +38,14 @@ Laplace Filtering Function
 Below is a single channel of the Laplace filtered image after applying the Gaussian blur. We can clearly see that the burned areas are emphasized in a darker grey compared to the rest of the image. In the original, we had greens, blues, oranges, and various other colors. By isolating specific channels after filtering, we can emphasize the difference between burned areas from raw terrain. 
 
 Laplace filtered image 
-<img src="laplacian_filter_new.jpg" width="750" height="500">     
+<img src="laplacian_filter_new.jpg" width="750" height="750">     
 
 Here are the two filters together - Laaplacian applied to the Gaussian blurred image. White areas are burned, so these differencees are further apparent in this channel of the filtered image.   
 
-<img src="laplace_blur_std_8_new.jpg" width="750" height="500">      
+<img src="laplace_blur_std_8_new.jpg" width="750" height="750">      
 
 When we complete the final segmentation with a simple numeric cutoff to decide what is burned and what is not, we get the following estimation of the wildfire perimeter. Knowing the geographic coordinates of the edges of the image makes this estimation of the fire perimeter easily mappaple to lattitude and longitude coordinates. 
 
-<img src="final_segmentation_new.jpg" width="750" height="500">      
+<img src="final_segmentation_new.jpg" width="750" height="750">      
 
 
