@@ -26,17 +26,31 @@ To smooth out noise in the spread as we generate buy and sell signals, I’ll us
 
 To smooth out noise in the spread as we generate buy and sell signals, I’ll use the 5 and 55 moving averages. Ideally, we’d like to enter this trade when it’s relatively cheap and sell when it’s more expensive. To do this, we’ll generate a rolling Z-Score and buy the spread when the Z-Score is negative, and sell the spread when it’s positive, as seen in the visual below. 
 
-I also test for stationarity of the rolling Z-Scores as well. Since we are using this as our heuristic, stationarity will tell us if the mean, variance, and standard deviation of the rolling Z-Scores change over time. Ideally they would not be changing drastically, since this would allow us to use a simple numeric cutoff to define when we enter or exit the trade. I test this with the augmented Dickey-Fuller test against the null-hypothesis of stationarity. Indeed, at a 5% (and even 1%) level, the rolling Z-Scores appear to be stationary. 
+The Z-Scores are defined as 
+
+<p><span class="math display">\[ Z = \frac{MA(5) - MA(55)}{\sigma_{MA(55)}} \]</span></p> 
+
+where MA() indicates the moving average sigma indicates a standard deviation. 
+
+I also test for stationarity of the rolling Z-Scores as well. Since we are using this as our heuristic, stationarity will tell us if the mean, variance, and standard deviation of the rolling Z-Scores change over time. Ideally they would not be changing drastically, since this would allow us to use a simple numeric cutoff to define when we enter or exit the trade. I test this with the augmented Dickey-Fuller test against the null-hypothesis of non-stationarity. Indeed, at a 5% (and even 1%) level, the rolling Z-Scores appear to be stationary. 
 
 ```python 
 spread_dickey_fuller = adfuller(z_scores.dropna())
-print('P value for the Augmented Dickey-Fuller Test is', spread_dickey_fuller[1])   
+print('P-value for the Augmented Dickey-Fuller Test is', spread_dickey_fuller[1])   
 ```
+```
+P-value for the Augmented Dickey-Fuller Test is 1.8628096799053177e-05 
+```
+
+With this P-value being less than 0.05, we reject the null hypothesis of non-stationarity. 
 
 <img src="z_scores_moving_averages.jpg" width="1100" height="425">
 
-Now that we’ve established stationarity, we’ll define buy and sell signals as follows
+Now that we have established evidence for stationarity, we’ll define buy and sell signals as follows
 
+<p><span class="math display">\[ buy = Z-score < -1.5, sell = Z-score > 1.5 \]</span></p> 
+
+These cutoffs are plotteed in the visual above. 
 
 <img src="final_trade_signals.jpg" width="1100" height="300"> 
 
