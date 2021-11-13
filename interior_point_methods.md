@@ -264,7 +264,7 @@ Iteration 19 - Duality Measure 8.819177693596308e-15
 Iteration 20 - Duality Measure 8.819177694213429e-16
 ```
 
-<img src="circus.jpg" width="1000" height="1000">
+<img src="circus.jpg" width="1000" height="800">
 
 Looks like a circus tent to me! 
 
