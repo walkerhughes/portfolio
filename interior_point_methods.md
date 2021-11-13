@@ -170,6 +170,29 @@ def qInteriorPoint(Q, c, A, b, guess, niter = 20, tol = 1e-16, verbose = False):
 
 We'll use this to solve a problem with elastic membranes. 
 
+Elastic membrane configurations can be described as solutions to an optimization problem. In this example we will find the shape of a large circus tent by solving a quadratic constrained optimization problem using our Interior Point method. 
+
+Imagine a large circus tent held up by a set of poles. We can model the tent by a square two-dimensional grid, where each grid point has an associated number that gives the height of the tent at that point. 
+
+At each grid point containing a tent pole, the tent height is constrained to be at least as large as the height of the tent pole. At all other grid points, the tent height is simply constrained to be greater than zero (ground height). 
+
+We can then flatten this array to give a one-dimensional vector representation of the grid. If we let x be a one-dimensional array giving the tent height at each grid point, and L be the one-dimensional array giving the underlying tent pole structure (consisting mainly of zeros, except at the grid points that contain a tent pole), we have the linear constraint
+
+<p><span class="math display">\[x \succeq L\]</span></p>  
+
+The theory of elastic membranes claims that such materials tend to naturally minimize a quantity known as the Dirichlet energy. This quantity can be expressed as a quadratic function of the membrane. Since we have modeled our tent with a discrete grid of values, this energy function has the form
+
+<p><span class="math display">\[\frac{1}{2}x^THx+c^Tx \]</span></p> 
+
+where H is a particular positive semidefinite matrix closely related to Laplace's Equation, c is a vector whose entries are all equal to −(n − 1)^(−20, and n is the side length of the grid. Our circus tent is therefore given by the solution to the quadratic constrained optimization problem:
+
+minimize 
+<p><span class="math display">\[\frac{1}{2}x^THx+c^Tx \]</span></p> 
+subject to 
+<p><span class="math display">\[ x \succeq L \]</span></p>  
+
+I'll use our interior point class to solve this optimization problem and plot the results. 
+
 ```python 
 def laplacian(n):
     """
@@ -243,5 +266,8 @@ Iteration 20 - Duality Measure 8.819177694213429e-16
 
 <img src="circus.jpg" width="1000" height="500">
 
+Looks like a circus tent to me! 
 
-### Markowitz Portfolio Optimization 
+This example was followed this lab closely froom the BYU ACME curriculum. 
+
+<p>This example closely followed <a href="https://acme.byu.edu/00000179-af25-d5e1-a97b-bf65129f0000/interior22020-pdf">this</a> lab from the BYU ACME curriculum.</p>
