@@ -59,7 +59,7 @@ line3d, = plt.plot(x, y, z, lw = .55)
 plt.show()
 ```
 
-<img src="lorenz_1.jpg" width="750" height="500">
+<img src="lorenz_1.jpg" width="750" height="700">
 
 Now we'll plot three solutions to the Lorernz Equations, each with a slightly different initial condition. 
 
@@ -90,7 +90,7 @@ for i in range(3):
 plt.legend() 
 plt.show()
 ```
-<img src="lorenz_3.jpg" width="975" height="500">
+<img src="lorenz_3.jpg" width="975" height="700">
 
 The Lyapunov exponent of a dynamical system is one measure of how chaotic a system is. While
 there are more conditions for a system to be considered chaotic, one of the primary indicators of
