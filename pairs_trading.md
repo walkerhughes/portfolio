@@ -17,7 +17,7 @@ The second visual plots the spread between the cumulative percentage returns, or
 
 The third visual plots the P/L (profit vs. losses) for longing 3/M2K contracts and shorting 2/MNQ contracts and holding that trade through the entire week. 
 
-<img src="spread_normality.jpg" width="1100" height="425">
+<img src="spread_normality.jpg" width="1100" height="450">
 
 <img src="z_scores_moving_averages.jpg" width="1100" height="425">
 
