@@ -32,7 +32,7 @@ I currently work as an economic consultant where I use statistics and econometri
 
 > [The Effects of COVID-19 Super Spreader Events with Synthetic Controls](./synth.html) 
 
-> [Statistical Arbitrage Model Through Covariance Stationary Pairs Trading](./pairs_trading.html)  
+> [Statistical Arbitrage Model Through Stationary Pairs Trading](./pairs_trading.html)  
 
 > <p><a href="./optimal_control_portfolio_opt.pdf">Optimal Control Portfolio Optimization with Dynamic Risk Tolereances</a></p>
 
