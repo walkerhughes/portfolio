@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## About Me 
+## Walker Hughes 
 
 My name's Walker and I'm a computational mathematician, economist, and San Francisco dweller. I finished my undergrad in April 2021 where I studied Applied and Computational Math and Economics with a minor in Portuguese. I'm trained in much of the mathematics and statistics that underpin modern machine learning and scientific computing, like optimization methods, sampling methods and computational linear algebra. I like exploring new use cases for these skills though personal projects.   
 
