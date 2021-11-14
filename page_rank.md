@@ -53,7 +53,7 @@ class DiGraph:
 
 We'll add the following methods to our class to find the eigenvector... 
 ```python 
-def linsolve(self, epsilon=0.85):
+    def linsolve(self, epsilon=0.85):
         """
         Computes the PageRank vector using the linear system method.
 
