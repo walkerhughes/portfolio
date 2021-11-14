@@ -5,7 +5,7 @@ layout: default
 ## Synthetic Control Methods
 ### Estimating the Effects of COVID-19 'Super Spreader' Events
 
-<p>A full report I wrote on this for an Econometrics class with other identification strategies is available <a href="./econ488.pdf">here</a></p> 
+<p>Check out my full report on this with other identification strategies <a href="./econ488.pdf">here</a></p> 
 
 ## What is a synthetic control anyway? 
 
