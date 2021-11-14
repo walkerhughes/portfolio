@@ -268,6 +268,4 @@ Iteration 20 - Duality Measure 8.819177694213429e-16
 
 Looks like a circus tent to me! 
 
-This example was followed this lab closely froom the BYU ACME curriculum. 
-
 <p>This example closely followed <a href="https://acme.byu.edu/00000179-af25-d5e1-a97b-bf65129f0000/interior22020-pdf">this</a> lab from the BYU ACME curriculum.</p>
