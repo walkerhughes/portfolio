@@ -4,7 +4,7 @@ layout: default
 
 ## About Me 
 
-My name is Walker and I'm a computational mathematician, economist, and San Francisco dweller. I finished my undergrad in April 2021 where I studied Applied and Computational Math and Economics with a minor in Portuguese. I'm trained in much of the mathematics and statistics that underpin modern machine learning and scientific computing, like optimization methods, sampling methods and computational linear algebra. I like exploring new use cases for these skills though personal projects.   
+My name is Walker and I'm a computational mathematician, economist, and San Franciscan. I finished my undergrad in April 2021 where I studied Applied and Computational Math and Economics with a minor in Portuguese Studies. I'm trained in much of the mathematics and statistics that underpin modern machine learning and scientific computing, like optimization methods, sampling methods and computational linear algebra. I like exploring new use cases for these skills though personal projects.   
 
 I currently work as an economic consultant where I use statistics and econometrics to study market efficiency, monopoly power, and total welfare realized by consumers. Below are some projects I've been working on with a couple research papers from my undergrad interspursed. 
 
