@@ -20,6 +20,9 @@ I currently work as an economic consultant where I use statistics and econometri
 
 > [Latent Semantic Indexing State of the Union Addresses](./lsi.html) 
 
+> [Page Rank Algorithm for March Madness](./page_rank.html)  
+
+
 ### Applied Math & Optimization 
 
 > [Chaotic Systems and the Lorenz Equations](./lorenz_equations.html) 
