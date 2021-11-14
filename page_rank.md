@@ -139,3 +139,78 @@ print(graph.itersolve())
 {'a': 0.09575863576738085,'b': 0.2741582859641452,'c': 0.3559247923043289,'d': 0.2741582859641452}
 ```
 
+```python 
+def get_ranks(d):
+    """
+    Construct a sorted list of labels based on the PageRank vector.
+
+    Parameters:
+        d (dict(str -> float)): a dictionary mapping labels to PageRank values.
+
+    Returns:
+        (list) the keys of d, sorted by PageRank value from greatest to least.
+    """
+    # get labels and values
+    labels, vals = list(d.keys()), list(d.values()) 
+    
+    # return list mapping labels sorted by rank
+    return [labels[i] for i in np.flip(np.argsort(vals), axis = 0)]
+``` 
+```
+print(get_ranks(d)) 
+```
+
+```
+['c', 'd', 'b', 'a'] 
+```
+
+```python 
+def rank_ncaa_teams(filename, epsilon = 0.85):
+    """
+    Reads the specified file and constructs a graph where node j points to
+    node i with weight w if team j was defeated by team i in w games. Uses the
+    DiGraph class and its itersolve() method to compute the PageRank values of
+    the teams, then ranks them with get_ranks().
+
+    Each line of the file has the format
+        A,B
+    meaning team A defeated team B.
+
+    Parameters:
+        filename (str): the name of the data file to read.
+        epsilon (float): the damping factor, between 0 and 1.
+
+    Returns:
+        (list(str)): The ranked list of team names.
+    """
+    # read in data and do parse lines, get set of all teams
+    with open(filename, "r") as myfile:
+        data = myfile.read().strip()
+        sites = sorted(set(data.replace("\n", ",").split(",")[2: ]))
+        sites = list(sites)
+        indices = {site: i for i, site in enumerate(sites)}
+       
+    # parse
+    data = data.split("\n")[1: ]
+    # how many teams there are
+    n = len(sites)
+    A = np.zeros((n, n)).astype(np.float64)
+    
+    # updata adjacency matrix
+    for line in data:
+        
+        info = line.split(",")
+        winner, loser = info[0], info[1]
+        row, col = indices[winner], indices[loser] 
+        A[row, col] += 1
+        
+    # put into graph object
+    graph = DiGraph(A, labels = sites) 
+
+    # return ranked teams via page-rank
+    return get_ranks(graph.itersolve(epsilon = epsilon))
+```
+```
+['UConn', 'Kentucky', 'Louisville']
+```
+
