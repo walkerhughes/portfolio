@@ -125,7 +125,7 @@ For each document, i, we'll find the relative word frequency as
 
 then we can define the global weight for each word j as 
 
-<p><span class="math display">\[weight_{j} = 1 = \Sigma_{i=1}^{m} \frac{p_{i, j}log(p_{i, j} + 1)}{log(m)} \]</span></p>   
+<p><span class="math display">\[weight_{j} = 1 + \Sigma_{i=1}^{m} \frac{p_{i, j}log(p_{i, j} + 1)}{log(m)} \]</span></p>   
 
 Note how the above formula is reminiscent of the statistical entropy formula, but adjusted for the number of documents in our corpus. With this global weight we replace each element Xij in X with its globally-weighted counterpart
 
