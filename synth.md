@@ -23,6 +23,6 @@ Using 21 US counties that best matched Meade County's COVID case numbers prior t
 
 <p>Check out my synthetic control class on my <a href="https://github.com/walkerhughes/synthetic_control_super_spreader">GitHub</a></p> 
 
-<img src="synth_match_cases.jpg" width="500" height="750">    
+<img src="synth_match_cases.jpg" width="1000" height="1250">    
 
  
