@@ -12,13 +12,14 @@ from itertools import combinations
 from scipy import linalg as la
 ```
 
+### Initial Motivation 
 Many real-world systems can be modeled as networks and codified as directed graphs. These are easily storable as arrays in python, and the PageRank Algorithm is a way to rank the nodes in these networks by importance. Here I implement the PageRank Algorithm to rank NCAA basketball teams going into March Madness on the basis of the teams they each played against and how many times they won or lost against each team. 
 
 We’ll take the following approach, representing the outcomes of these games as an adjacency matrix A. This will list all of the N teams we are concerned with and numerically represent these pairings as an N x N array where the columns and rows indicate a specific team. As an example, for any two teams i and j, node-i,j in our adjacency matrix will represent the number of times that team i beat team j prior to March Madness as an integer value. Likewise, node-j,i in the adjacency matrix  will be the number of times that team j beat team i prior to March Madness. To fix the problem of “sinks” in the matrix. These are locations where a team did not play against any of the other teams in the NCAA. For example, for team i, node-i,i will be a 0, which is mathematically undesirable for our algorithm. We’ll replace any column of row where this occurs with a column or row of all ones. 
 
 We can extend our use of a simple adjacency matrix though to incorporate the relative amount of wins each team had against any other.  This is done by finding the percentage of a team’s  total wins represented by their wins against each of their components. This is meaningful since knowing if a team i is relatively more likely to win against another team j does not rely on the total number of games a team played in a season, and not all teams in our data played the same number of games.
 
-I implement a class called ```DiGraph``` that accepts an Adjacency Matrix A and represents it as a directed graph, which we can then run the PAgeRank Algorithm on. I implement the PageRank Algorithm in 3 different forms. 
+I implement a class called ```DiGraph``` that accepts an Adjacency Matrix A, eliminates any "sinks" init, and then finds the relative frequency of a team's wins against any other team (stored as A-hat). We can then run the PageRank Algorithm on A-hat. 
 
 
 ```python 
@@ -43,12 +44,28 @@ class DiGraph:
             if np.allclose(A[:, i], self.zeros): 
                 A[:, i] = self.ones
         
-        # calculate A_hat with broadcasting along columns 
+        # calculate A-hat with broadcasting along columns 
         self.Ahat = A / np.sum(A, axis = 0)
         self.labels = labels 
 ```
+### PageRank Vector 
 
-We'll add the following methods to our class to find the eigenvector... 
+The PageRank vector is essentially just a steady-state vector to the markov process implied by our adjacency matrix A-hat. While this is easily found for simple, low-dimensional systems, more sophisticated versions to find the PageRank vector exist when we are dealing with higher-dimensioinality. 
+
+We'll add the following methods to our class to find the PageRank vector in 3 different forms then confirm they all agree with each other on a simple test case. I'll only give an intuitive appeal for how the different methods work and won't go too into the math. 
+
+#### Linear Solver 
+This method essentially finds the probability limit of being in state i (node i) as time approaches infinity. Translated to basketball, this is attempting to find the probability of being the winning team between any two pairings if many many games were played.  
+
+#### Eigen-Solver
+This is essentially the power method for solving a linear system, then normalizing the resulting vector. 
+
+#### Iterative Solving 
+This method works similarly to the Eigen-Solver method but has a simple tolerance cut-off for when we ought to stop iterating. This relies on finding a sequence of potential pagerank vectors, and stopping either when we've iterated enough times, or when the norm between two sequential vectors is smaller than our indicated tolerance (this is esentially saying that we've either tried hard enough or are close enough to an adequate steady-state vector)
+
+These methods are implemented below. 
+
+
 ```python 
     def linsolve(self, epsilon = 0.85):
         """
@@ -134,6 +151,8 @@ print(graph.itersolve())
 {'a': 0.09575863576738085,'b': 0.2741582859641452,'c': 0.3559247923043289,'d': 0.2741582859641452}
 ```
 
+Since these methods all agree, we can move onto actually ranking nodes based on this vector. This is really the key part of the ranking system, since it translates our steady-state vector into an actionable label. It's very simple: sort the labels associated with the steady-state vector acording to their numeric value in decreasing order.  
+
 ```python 
 def get_ranks(d):
     """
@@ -158,10 +177,11 @@ print(get_ranks(d))
 ['c', 'd', 'b', 'a'] 
 ```
 
+Now for the fun stuff. The file ```ncaa2010.csv``` contains the winners and losers from NCAA basketball games in 2010 before March Madness was in full swing. 
 
 
 ```python 
-def rank_ncaa_teams(filename, epsilon = 0.85):
+def rank_ncaa_teams(filename = "ncaa2010.csv", epsilon = 0.85):
     """
     Read the specified file and construct a graph where node j points to
     node i with weight w if team j was defeated by team i in w games. Use the
@@ -185,7 +205,7 @@ def rank_ncaa_teams(filename, epsilon = 0.85):
         teams = sorted(set(data.replace("\n", ",").split(",")[2: ]))             
         team_indices = {team: i for i, team in enumerate(list(teams))}
     
-    # init adjaacency matrix for DiGraph object 
+    # init adjacency matrix for DiGraph object 
     n = len(teams)
     A = np.zeros((n, n)) 
     
@@ -199,8 +219,8 @@ def rank_ncaa_teams(filename, epsilon = 0.85):
         winner, loser = winner_loser[0], winner_loser[1] 
 
         # update adjacency matrix 
-        row, col = team_indices[winner], team_indices[loser] 
-        A[row, col] += 1
+        winner_row, loser_col = team_indices[winner], team_indices[loser] 
+        A[winner_row, loser_col] += 1 
     
     # init directed graph, get page-rank team rakings
     graph = DiGraph(A, labels = teams)
