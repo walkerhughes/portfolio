@@ -58,7 +58,7 @@ We'll add the following methods to our class to find the PageRank vector in 3 di
 This method essentially finds the probability limit of being in state i (node i) as time approaches infinity. Translated to basketball, this is attempting to find the probability of being the winning team between any two pairings if many many games were played.  
 
 #### Eigen-Solver
-This is essentially the power method for solving a linear system, then normalizing the resulting vector. 
+This is essentially the power method for finding the eigenvector of a linear system, then normalizing the resulting vector. 
 
 #### Iterative Solving 
 This method works similarly to the Eigen-Solver method but has a simple tolerance cut-off for when we ought to stop iterating. This relies on finding a sequence of potential pagerank vectors, and stopping either when we've iterated enough times, or when the norm between two sequential vectors is smaller than our indicated tolerance (this is esentially saying that we've either tried hard enough or are close enough to an adequate steady-state vector)
