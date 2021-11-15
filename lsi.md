@@ -129,7 +129,7 @@ then we can define the global weight for each word j as
 
 Note how the above formula is reminiscent of the statistical entropy formula, but adjusted for the number of documents in our corpus. With this global weight we replace each element Xij in X with its globally-weighted counterpart
 
-<p><span class="math display">\[ g_{j} log(X_{i, j} = 1) \]</span></p>   
+<p><span class="math display">\[ weight_{j} log(X_{i, j} + 1) \]</span></p>    
 
 This is implemented below using a Scipy Sparse matrix. Then we rerun our LSI using our globally-weighted matrix. 
 

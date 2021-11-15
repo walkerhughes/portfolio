@@ -185,7 +185,7 @@ def rank_ncaa_teams(filename, epsilon = 0.85):
     """
     # read in data and do parse lines, get set of all teams
     with open(filename, "r") as myfile:
-        data = myfile.read().strip()
+        data = myfile.read().strip() 
         sites = sorted(set(data.replace("\n", ",").split(",")[2: ]))
         sites = list(sites)
         indices = {site: i for i, site in enumerate(sites)}
