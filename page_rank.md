@@ -207,7 +207,7 @@ def rank_ncaa_teams(filename, epsilon = 0.85):
         A[row, col] += 1
     
     # init directed graph, get page-rank team rakings
-    graph = DiGraph(A, labels = sites)
+    graph = DiGraph(A, labels = teams)
     return get_ranks(graph.itersolve(epsilon = epsilon)) 
 ```
 ```
