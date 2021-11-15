@@ -13,6 +13,13 @@ from itertools import combinations
 from scipy import linalg as la
 ```
 
+Many real-world systems can be modeled as networks and codified as directed graphs. These are easily storable as arrays in python, and the PageRank Algorithm is a way to rank the nodes in these networks by importance. Here I implement the PageRank Algorithm to rank NCAA basketball teams going into March Madness on the basis of the teams they each played against and how many times they won or lost against each team. 
+
+We’ll take the following approach, representing the outcomes of these games as an adjacency matrix A. This will list all of the N teams we are concerned with and numerically represent these pairings as an N x N array where the columns and rows indicate a specific team. As an example, for any two teams i and j, node-i,j in our adjacency matrix will represent the number of times that team i beat team j prior to March Madness as an integer value. Likewise, node-j,i in the adjacency matrix  will be the number of times that team j beat team i prior to March Madness. To fix the problem of “sinks” in the matrix. These are locations where a team did not play against any of the other teams in the NCAA. For example, for team i, node-i,i will be a 0, which is mathematically undesirable for our algorithm. We’ll replace any column of row where this occurs with a column or row of all ones. 
+
+I implement a class called ```DiGraph``` that accepts an Adjacency Matrix A and represents it as a directed graph, which we can then run the PAgeRank Algorithm on. I implement the PAgeRank Algorithm in 3 different forms: 
+
+
 ```python 
 class DiGraph:
     """
