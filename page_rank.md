@@ -8,7 +8,6 @@ layout: default
 
 ```python 
 import numpy as np 
-import networkx as nx
 from itertools import combinations
 from scipy import linalg as la
 ```
@@ -17,40 +16,29 @@ Many real-world systems can be modeled as networks and codified as directed grap
 
 We’ll take the following approach, representing the outcomes of these games as an adjacency matrix A. This will list all of the N teams we are concerned with and numerically represent these pairings as an N x N array where the columns and rows indicate a specific team. As an example, for any two teams i and j, node-i,j in our adjacency matrix will represent the number of times that team i beat team j prior to March Madness as an integer value. Likewise, node-j,i in the adjacency matrix  will be the number of times that team j beat team i prior to March Madness. To fix the problem of “sinks” in the matrix. These are locations where a team did not play against any of the other teams in the NCAA. For example, for team i, node-i,i will be a 0, which is mathematically undesirable for our algorithm. We’ll replace any column of row where this occurs with a column or row of all ones. 
 
-I implement a class called ```DiGraph``` that accepts an Adjacency Matrix A and represents it as a directed graph, which we can then run the PAgeRank Algorithm on. I implement the PAgeRank Algorithm in 3 different forms: 
+We can extend our use of a simple adjacency matrix though to incorporate the relative amount of wins each team had against any other.  This is done by finding the percentage of a team’s  total wins represented by their wins against each of their components. This is meaningful since knowing if a team i is relatively more likely to win against another team j does not rely on the total number of games a team played in a season, and not all teams in our data played the same number of games.
+
+I implement a class called ```DiGraph``` that accepts an Adjacency Matrix A and represents it as a directed graph, which we can then run the PAgeRank Algorithm on. I implement the PageRank Algorithm in 3 different forms. 
 
 
 ```python 
 class DiGraph:
     """
     A class for representing directed graphs via their adjacency matrices.
-
-    Attributes:
-        (fill this out after completing DiGraph.__init__().)
     """
     def __init__(self, A, labels = None):
         """
-        Modify A so that there are no sinks in the corresponding graph,
-        then calculate Ahat. Save Ahat and the labels as attributes.
-
         Parameters:
             A ((n,n) ndarray): the adjacency matrix of a directed graph.
                 A[i,j] is the weight of the edge from node j to node i.
+
             labels (list(str)): labels for the n nodes in the graph.
                 If None, defaults to [0, 1, ..., n-1].
         """
         self.m, self.n = A.shape
-        self.zeros, self.ones = np.zeros(self.n), np.ones(self.n)
+        self.zeros, self.ones = np.zeros(self.n), np.ones(self.n) 
         
-        # if no labels given, make labels as numeric range 
-        if not labels: 
-            labels = list(range(self.n))
-                
-        # if there are too many/too few labels 
-        if len(labels) != self.n:
-            raise ValueError("Labels not of correct dimension.")
-        
-        # eliminate "sinks" in A 
+        # eliminate "sinks" in A  
         for i in range(self.n): 
             if np.allclose(A[:, i], self.zeros): 
                 A[:, i] = self.ones
@@ -128,6 +116,7 @@ We'll add the following methods to our class to find the eigenvector...
 ```
 
 ```python 
+# a simple test case to make sure our three page rank methods aagree 
 A = np.array([[0, 0, 0, 0], 
               [1, 0, 1, 0], 
               [1, 0, 0, 1], 
