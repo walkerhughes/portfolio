@@ -177,7 +177,9 @@ print(get_ranks(d))
 ['c', 'd', 'b', 'a'] 
 ```
 
-Now for the fun stuff. The file ```ncaa2010.csv``` contains the winners and losers from NCAA basketball games in 2010 before March Madness was in full swing. 
+
+Now for the fun stuff. The file ```ncaa2010.csv``` contains the winners and losers from NCAA basketball games in 2010 before March Madness was in full swing. The data is in ```winner,loser\n``` format, so we first strip all unecessary text, split each row based on winners and losers, and then construct our adjacency matrix. After that, we'll run our PageRank method and see the top 3!  
+
 
 
 ```python 
@@ -234,3 +236,6 @@ rank_ncaa_teams(filename = "ncaa2010.csv", epsilon = 0.85)[: 3]
 ['UConn', 'Kentucky', 'Louisville']
 ```
 
+For 2010, this performed well! UConn won the national championship, Kentucky was a semifinalist, and Louisville was ranked very highly going into the tournament. 
+
+The PageRank method can be extended to any number of applications, including ranking internet pages based on the hyperlinks between them, or ranking musicians based on who they have collaborated with. The ```NetworkX``` library has an efficient implementation of the PageRank algorithm that is robust to large networks, but implementing this from scratch was a fun and instructive way to better understand the inner workings of the algorithm and see a cool use case of markov chains. 
