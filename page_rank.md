@@ -133,7 +133,7 @@ These methods are implemented below.
 ```
 
 ```python 
-# a simple test case to make sure our three page rank methods aagree 
+# a simple test case to make sure our three page rank methods agree 
 A = np.array([[0, 0, 0, 0], 
               [1, 0, 1, 0], 
               [1, 0, 0, 1], 
