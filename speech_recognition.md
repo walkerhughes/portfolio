@@ -67,9 +67,9 @@ def sample_gmmhmm(gmmhmm, n_sim):
 ```
 
 
-Most speech recognition models don't actually recognize words, they recognize the distinct sounds produced by a language, which are called phonemes. English has 44 unique phonemes, and thus each word can be represented as a combination of some subset of these 44 sounds. Our speech recognition model will have 44 distinct GMMHMMs, one for each distinct phonemes. 
+Most speech recognition models don't actually recognize words, they recognize the distinct sounds produced by a language, which are called phonemes. English has 44 unique phonemes, and thus each word can be represented as a combination of some subset of these 44 sounds. A robust speech recognition model could have 44 distinct GMMHMMs, one for each distinct phoneme. 
 
-Before we can do this, audio data takes a good amount of pre-processing. We will do this be representing each audio clip by its mel-frequency cepstral coefficients (MCFFs). We can train a GMMHMM on various audio clips or MFCCs for a given word, and by doing this for several words, we form a collection
+Before we can go further, audio data takes a good amount of pre-processing, and we will be representing each audio clip by its mel-frequency cepstral coefficients (MCFFs). We can train a GMMHMM on various audio clips or MFCCs for a given word, and by doing this for several words, we form a collection
 of GMMHMMs, one for each word. For a new speech signal, after decomposing it
 into its MFCC array, we can score the signal against each GMMHMM, returning the word whose
 GMMHMM scored the highest. 
@@ -108,7 +108,7 @@ for l in [bio, math, polysci, psych, stats]:
 
 Now let's actually train the model! With enough examples of MCFF's for each word, we can train a separate GMMHMM for each word. We'll use this collection of GMMHMM's to recognize words by their audio when decomposed into their MCFF arrays. 
 
-For each word, we will train 10 separate GMMHMM models, and use the modell thaat has the highest log-likelihood. For each GMMHMM, we will use 5 states with 3 mixture components. 
+For each word, we will train 10 separate GMMHMM models, and use the model that has the highest log-likelihood. For each GMMHMM, we will use 5 states with 3 mixture components. 
 
 ```python
 words = mels.keys() 
@@ -146,7 +146,7 @@ print(best)
 -30489.250566198258
 ```
 
-Now for the final recognition of words. For a given word observation, we simply find the log-likelihood for each of these GMMHMM's and return the label of the GMMHMM with the highest log-likelihood. 
+Now for the final word recognitions. For a given word observation, we simply find the log-likelihood for each of these GMMHMM's and return the label of the GMMHMM with the highest log-likelihood. 
 
 ```python
 # load in the models 
@@ -180,6 +180,6 @@ Accuracy for Psychology: 	100.00%
 Accuracy for Statistics: 	100.00%
 ```
 
-This model did well, but this is clearly a very simple example. Speech recognition is no simple task, but this is a decent way to get introduced to the topic. 
+This model did well but is clearly a very simple example. Speech recognition is no simple task, but this is a decent way to get introduced to the topic. 
 
 [back](./)
