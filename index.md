@@ -6,7 +6,7 @@ layout: default
 
 Hello! I'm Walker and I'm a computational mathematician, economist, and San Franciscan. I finished my undergrad in April 2021 where I studied Applied and Computational Math and Economics with a minor in Portuguese Studies. I'm trained in much of the mathematics and statistics that underpin modern machine learning and scientific computing, like optimization methods, sampling methods and computational linear algebra. I like exploring new use cases for these skills though personal projects.   
 
-I currently work as an economic consultant where I use statistics and econometrics to study market efficiency, monopoly power, and total welfare realized by consumers. Below are some projects I've been working on with a couple research papers from my undergrad interspursed. 
+I currently work as an economic consultant where I conduct rigorous economic rresearch to study market efficiency, monopoly power, and total welfare realized by consumers. Below are some projects I've been working on with a couple research papers from my undergrad interspursed. 
 
 <p>Feel free to check out my resume <a href="./Hughes, Walker.pdf">here</a> or take a look at some of my projects below!</p>
 
