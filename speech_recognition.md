@@ -146,7 +146,7 @@ print(best)
 -30489.250566198258
 ```
 
-Now for the final recognition of words. For a given word, we simply find the log-likelihood for each word's GMMHMM and return the label of the GMMHMM with the highest log-likelihood. 
+Now for the final recognition of words. For a given word observation, we simply find the log-likelihood for each of these GMMHMM's and return the label of the GMMHMM with the highest log-likelihood. 
 
 ```python
 # load in the models 
