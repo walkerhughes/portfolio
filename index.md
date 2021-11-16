@@ -12,7 +12,7 @@ Take a look at some of my projects below!
 
 ## Contact Me 
 
-<p>Feel free to find me on <a href="https://www.linkedin.com/in/walker-hughes/"> LinkedIn </a> or check out my resume <a href="./Hughes, Walker.pdf">here</a></p>
+<p>Feel free to find me on <a href="https://www.linkedin.com/in/walker-hughes/">LinkedIn </a> or check out my <a href="./Hughes, Walker.pdf">resume</a></p>
 
 ## Projects  
 
