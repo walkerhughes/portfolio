@@ -66,13 +66,15 @@ def sample_gmmhmm(gmmhmm, n_sim):
 
 ```
 
-Most speech recognition models don't actually recognize words, rather they recognize distinct sounds produced by a language called phonemes. English had 44 unique phonemes, so our implementation will have 44 distinct GMMHMMs, one for each distinct sound, and thus each word can be represented as a combination of some subset fo these 44 sounds. 
 
-Before we can do this, audio data takes a good amount of pre-processing. We will do this be representing each audio clip by its mel-frequency cepstral coefficients (MCFFs). we can train a GMMHMM on various audio clips or 
-MFCCs for a given word, and by doing this for several words, we form a collection
+Most speech recognition models don't actually recognize words, they recognize the distinct sounds produced by a language, which are called phonemes. English has 44 unique phonemes, and thus each word can be represented as a combination of some subset of these 44 sounds. Our speech recognition model will have 44 distinct GMMHMMs, one for each distinct phonemes. 
+
+Before we can do this, audio data takes a good amount of pre-processing. We will do this be representing each audio clip by its mel-frequency cepstral coefficients (MCFFs). We can train a GMMHMM on various audio clips or MFCCs for a given word, and by doing this for several words, we form a collection
 of GMMHMMs, one for each word. For a new speech signal, after decomposing it
 into its MFCC array, we can score the signal against each GMMHMM, returning the word whose
-GMMHMM scored the highest. Further info on this can be found in my GitHib repository for this project. 
+GMMHMM scored the highest. 
+
+Below we extract the MFCC's for each of our words and store them in a dictionary. 
 
 ```python 
 # skip the repeats, keep the mels in mels dict 
@@ -99,13 +101,18 @@ for doc in os.listdir(filepath):
 bio, math, polysci, psych, stats = mels.values() 
 for l in [bio, math, polysci, psych, stats]: 
     print(len(l), end = " ")
-
+```
+```
+30 30 30 30 30
 ```
 
-Now let's actually train the model! 
+Now let's actually train the model! With enough examples of MCFF's for each word, we can train a separate GMMHMM for each word. We'll use this collection of GMMHMM's to recognize words by their audio when decomposed into their MCFF arrays. 
+
+For each word, we will train 10 separate GMMHMM models, and use the modell thaat has the highest log-likelihood. For each GMMHMM, we will use 5 states with 3 mixture components. 
 
 ```python
 words = mels.keys() 
+bio, math, polysci, psych, stats = mels.values() 
 samples = [bio, math, polysci, psych, stats] 
 
 # loop over each word and its samples 
@@ -113,8 +120,8 @@ for word, word_samples in zip(words, samples):
     
     # get train and test data 
     x_train, x_test = word_samples[: 20], word_samples[20: ] 
-    best = -np.inf  
     loop = tqdm(range(10)) 
+    best = -np.inf  
     
     for i in loop: 
         
@@ -139,6 +146,8 @@ print(best)
 -30489.250566198258
 ```
 
+Now for the final recognition of words. For a given word, we simply find the log-likelihood for each word's GMMHMM and return the label of the GMMHMM with the highest log-likelihood. 
+
 ```python
 # load in the models 
 models = [pickle.load(open("{}.p".format(word), "rb")) for word in words] 
@@ -159,10 +168,8 @@ for index, (word, sample) in enumerate(zip(words, samples)):
     # print results and update accuracy dictionary 
     acc = 100 * np.mean([pred == y_test for pred in preds]) 
     accs.update({word: acc})
-    if word == "Biology": 
-        print("Accuracy for {}: \t\t{:.2f}%".format(word, acc)) 
-    else: 
-        print("Accuracy for {}: \t{:.2f}%".format(word, acc))
+
+    print("Accuracy for {}: \t{:.2f}%".format(word, acc))
 ```
 
 ```
@@ -172,5 +179,7 @@ Accuracy for PoliticalScience: 	 90.00%
 Accuracy for Psychology: 	100.00%
 Accuracy for Statistics: 	100.00%
 ```
+
+This model did well, but this is clearly a very simple example. Speech recognition is no simple task, but this is a decent way to get introduced to the topic. 
 
 [back](./)
