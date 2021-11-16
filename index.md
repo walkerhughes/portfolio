@@ -8,7 +8,11 @@ Hello! I'm Walker and I'm a computational mathematician, economist, and San Fran
 
 I currently work as an economic consultant where I conduct rigorous economic research to study market efficiency, monopoly power, and total welfare realized by consumers. Below are some projects I've been working on with a couple research papers from my undergrad interspursed. 
 
-<p>Feel free to check out my resume <a href="./Hughes, Walker.pdf">here</a> or take a look at some of my projects below!</p>
+Take a look at some of my projects below!
+
+## Contact Me 
+
+<p>Feel free to find me on <a href="https://www.linkedin.com/in/walker-hughes/"> LinkedIn </a> or check out my resume <a href="./Hughes, Walker.pdf">here</a></p>
 
 ## Projects  
 
