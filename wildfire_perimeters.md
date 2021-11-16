@@ -9,9 +9,9 @@ Estimating the true geographic coordinates of a raging wildfire can be difficult
 
 In California alone, the U.S. Forest Service spends about $200 million per year to suppress 98% of wildfires and up to $1 billion to suppress the other 2% of fires that escape initial ignition and become large. Being able to detect fires early on and track their real-time growth is not just important for environmental conservation, it's also economically crucial for public service organizations. 
 
-While this is an inherently high dimenional problem, image segmentation provides a simple solution that affords us a high level of interpretability. Here I explore image segmentation and image filtering on Sentinel Satellite images for estimating the perimeter of the Center Creek Trail Fire that burned in Utah in 2020. 
+While this is an inherently high dimenional problem, image segmentation provides a simple solution that affords us a high level of interpretability. It also works well when we do not have labeled data, so it is at times preferable to using another model like a convolutional neural network that must be trained on labeled data (indeed, estimating the fire perimeter is essentially the labeling process). Here I explore image segmentation and image filtering on Sentinel Satellite images for estimating the perimeter of the Center Creek Trail Fire that burned in Utah in 2020. 
 
-The Sentinel Satellite orbits the earth and takes multispectral images of the planet. These images are high dimensional and contain far more chanels than just Red, Green, and Blue. Let's take a look at the atmospheric channels from a Sentinel Satellite image of this fire. These channels essentially filter through the smoke that would normally occlude an RGB image taken from above, and this allows us to more cllearly view the burned areas. 
+The Sentinel Satellite orbits the earth and takes multispectral images of the planet. These images are high dimensional and contain far more chanels than just Red, Green, and Blue. Let's take a look at the atmospheric channels from a Sentinel Satellite image of this fire. These channels essentially filter through the smoke that would normally occlude an RGB image taken from above, and this allows us to more clearly view the burned areas. 
 
 Center Creek Trail Fire, burned areas are in orange [Source: Sentinel Satellite] 
 <img src="center_creek_burn.jpg" width="750" height="750">   
@@ -20,7 +20,7 @@ While we could feasibly use something like a floodfill algorithm at the pixel-co
 
 ### Pre-Processing with Filters 
 
-We can use Gaussian blurring (gaussian convolution) and Laplace filtering to filter noise from the image and emphasize stark contrasts between pixel intensities. We want to reduce random noise in the image in order to focus on meaningful changes in color intensity (burned areas from not burned). The standard deviation parameter is user-specified.  
+We can use Gaussian blurring (gaussian convolution) and Laplace filtering to filter noise from the image and emphasize stark contrasts between pixel intensities. We want to reduce random noise in the image in order to focus on meaningful changes in color intensity (burned areas from not burned). This filtering will emphasize burneed areas and make them easier to recognize. We'll first use the gaussian blur filter, where the standard deviation parameter is user-specified.  
 
 Gaussian Convolution Function 
 
@@ -48,4 +48,5 @@ When we complete the final segmentation with a simple numeric cutoff to decide w
 
 <img src="final_segmentation_new.jpg" width="750" height="750">      
 
+While this approach may seem simple, it is computationally inexpensive compared to alternatives like neural networks and does not require training on labeled data. When compared to the original image, we were able to efficiently label the fire perimeter in a way that is easily mapped to geographic coordinates.  
 
