@@ -50,3 +50,4 @@ When we complete the final segmentation with a simple numeric cutoff to decide w
 
 While this approach may seem simple, it is computationally inexpensive compared to alternatives like neural networks and does not require training on labeled data. When compared to the original image, we were able to efficiently label the fire perimeter in a way that is easily mapped to geographic coordinates.  
 
+[back](./)

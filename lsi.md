@@ -189,3 +189,5 @@ print(weighted_lsi(speech))
 ```
 
 One weakness of LSI is that it isnt necessarily robust to adding new documents to the corpus and total vocabulary used. For each new document we wish to include, we'd ideally update our global weights and use the updated document matrix when computing the cosine similarities between documents. Overeall though, LSI is very useful and tons of information retrieval systems rely on similar methods. 
+
+[back](./)

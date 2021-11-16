@@ -126,3 +126,7 @@ print(slope)
 ```
 0.9234478827176315
 ```
+
+With a positive Lyapunov exponent, we conclude that chaos is indeed present in the system. 
+
+[back](./)

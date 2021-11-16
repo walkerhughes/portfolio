@@ -56,3 +56,4 @@ Below is a visual of the spread for 3/M2K - 2/MNQ with our buy and sell signals 
 
 (It's worth noting that these signals only indicate whether we buy the spread (long 3/M2K, short 2/MNQ), or sell the spread (short 3/M2K, long 2/MNQ). Determining when to close a position after entering a trade based on these signals is a whole other beast to be tackled in a subsequent project. Further, I'm not a financial advisor, so don't use these metrics for your own investing.) 
 
+[back](./)
