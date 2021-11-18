@@ -26,6 +26,8 @@ Take a look at some of my projects below!
 
 > [Page Rank Algorithm for March Madness](./page_rank.html)  
 
+> [Comparing PCA with Random Dimension Reduction via Johnson-Lindenstrauss](./random_projections.html) 
+
 ### Applied Math & Optimization 
 
 > [Chaotic Systems and the Lorenz Equations](./lorenz_equations.html) 
