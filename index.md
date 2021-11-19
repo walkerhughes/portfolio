@@ -18,7 +18,7 @@ Below are some projects I've been working on with a couple research papers from 
 
 ## Contact Me 
 
-<p>Feel free to take a look, find me on <a href="https://www.linkedin.com/in/walker-hughes/">LinkedIn</a>, or check out my <a href="./Hughes, Walker.pdf">resume</a></p>
+<p>Feel free to find me on <a href="https://www.linkedin.com/in/walker-hughes/">LinkedIn</a> or take a look at my <a href="./Hughes, Walker.pdf">resume</a> for more info</p>
 
 ## Projects  
 
