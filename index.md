@@ -4,11 +4,19 @@ layout: default
 
 ## About Me 
 
-Hello! I'm Walker and I'm a computational mathematician, economist, and San Franciscan. I finished my undergrad in April 2021 where I studied Applied and Computational Math and Economics with a minor in Portuguese Studies. I'm trained in much of the mathematics and statistics that underpin data science, machine learning, and scientific computing, like optimization methods, sampling methods and computational linear algebra. I like exploring new use cases for these skills though personal projects.   
+Hello! I'm Walker and I'm a computational mathematician, economist, and San Franciscan. I finished my undergrad in April 2021 where I studied Applied and Computational Math and Economics with a minor in Portuguese Studies. I'm trained in much of the mathematics and statistics that underpin data science, machine learning, and scientific computing, like optimization methods, sampling methods, and computational linear algebra. I like exploring new use cases for these skills though personal projects. 
 
-I currently work as an economic consultant where I conduct rigorous economic research to study market efficiency, monopoly power, and total welfare realized by consumers. Below are some projects I've been working on with a couple research papers from my undergrad interspursed. 
+I currently work as an economic consultant where I conduct rigorous economic research to study market efficiency, monopoly power, and various other things. A typical day on the job involves exploring large datasets with SQL, digging in even deeper with R, and writing up these findings for client-ready exhibits and expert reports used in Federal court cases.    
 
-Take a look at some of my projects below!
+A few other fun facts: 
+1. 2.5 years of daily Python use during my undergrad for scientific computing, machine learning, and research projects
+2. Worked as a Teaching Assistant for four different courses: Machine Learning for Economists, Econometrics, Intermediate Macroeconomics, and Principles of Economics 
+3. Worked as an ML Research Assistant to study wildfire perimeter estimation with image segmentation 
+4. Currently use R and SQL daily for work projects 
+
+Below are some projects I've been working on with a couple research papers from my undergrad interspursed. 
+
+Feel free to take a look!
 
 ## Contact Me 
 
