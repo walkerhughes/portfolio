@@ -16,11 +16,9 @@ A few other fun facts:
 
 Below are some projects I've been working on with a couple research papers from my undergrad interspursed. 
 
-Feel free to take a look!
-
 ## Contact Me 
 
-<p>Feel free to find me on <a href="https://www.linkedin.com/in/walker-hughes/">LinkedIn </a> or check out my <a href="./Hughes, Walker.pdf">resume</a></p>
+<p>Feel free to take a look, find me on <a href="https://www.linkedin.com/in/walker-hughes/">LinkedIn </a>,or check out my <a href="./Hughes, Walker.pdf">resume</a></p>
 
 ## Projects  
 
