@@ -17,6 +17,8 @@ from sklearn.model_selection import ParameterGrid
 from sklearn.ensemble import GradientBoostingClassifier  
 ```
 
+## MAKE SURE ALL TIMES AND MODEL ACCURACIES ARE CORRECT 
+
 ```python
 def jl_bound(n, eps): 
     return np.ceil((24 * np.log(n)) / (3*(eps**2) - 2*(eps**3))).astype(int) 
