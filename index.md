@@ -54,3 +54,6 @@ Below are some projects I've been working on with a couple research papers from 
 
 > <p><a href="./crise_do_encilhamento.pdf">O Encilhamento e o papel de Rui Barbosa</a></p> 
 
+### Photography 
+
+> [Check out some photography](./photography.html)  
