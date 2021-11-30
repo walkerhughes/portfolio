@@ -4,7 +4,7 @@ layout: default
 
 ## About Me 
 
-Hello! I'm Walker and I'm a computational mathematician, economist, and San Franciscan. I finished my undergrad in April of 2021 and I studied Applied and Computational Math and Economics with a minor in Portuguese Studies. I'm trained in much of the mathematics and statistics that underpin data science, machine learning, and scientific computing, like optimization methods, sampling methods, and computational linear algebra. I like exploring new use cases for these skills though personal projects. 
+My name is Walker and I am a computational mathematician, economist, and San Franciscan. I finished my undergrad in April of 2021 where I complleted dual majors in Applied and Computational Mathematics and Economics with a minor in Portuguese Studies. I am trained in much of the mathematics and statistics that underpin data science, machine learning, and scientific computing, like optimization methods, sampling methods, and computational linear algebra. I like exploring new use cases for these skills though personal projects. 
 
 I currently work as an economic consultant where I conduct rigorous economic research to study market efficiency, monopoly power, and various other things. A typical day on the job involves exploring large financial and commerce datasets with SQL, digging in even deeper with R, and writing up my findings for client-ready exhibits and expert reports used in federal court cases.   
 
