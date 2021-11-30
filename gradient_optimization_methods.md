@@ -57,7 +57,7 @@ def steepest_descent(f, Df, x0, tol = 1e-5, maxiter = 100):
         opt_alpha = lambda a: f(x0 - (a * dfx))  
 
         # update x0 with optimal alpha
-        x0 = x0 - (opt.minimize_scalar(opt_alpha).x * dfx) 
+        x0 -= (opt.minimize_scalar(opt_alpha).x * dfx) 
         
         if norm(Df(x0), np.inf) < tol:  
             return x0, True, i + 1 
