@@ -26,13 +26,13 @@ allows us to determine the similarity between two documents' contents. We can re
 
 For a large set of documents and words, this matrix is likely to be both very large and sparse. We can use PCA to reduce the dimension of the data, but we don't scale the matrix in order to retain this sparsity. 
 
-A key feature of this approach to respresenting our documents as a numeric matrix is that we have mapped the text into an inner product space, which allows us to use cosine laws on the vectors in the matrix. For a given document i, we can find the document most similar to it using cosine laws. (It's worth noting that this implicitely is assuming that documents that have similar word frequency distributions are similar to each other and is what we are optimizing for. Other methods build on this )
+A key feature of this approach to respresenting our documents as a numeric matrix is that we have mapped the text into an inner product space, which allows us to use cosine laws on the vectors in the matrix. For a given document i, we can find the document most similar to it using cosine laws.  
 
 Thus, finding the document most similar to document i is a matter of finding 
 
 <p><span class="math display">\[argmax_{j\neq i} \frac{< x_i, x_j >}{||x_i|| ||x_j||} \]</span></p> 
 
-This is implemented in the function below. 
+This is implemented in the function below. It's also worth noting that this is implicitely assuming that word frequency distributions are sufficient for comparing semantics. Other models might build on this by incorporating author-specific factors like political affiliation, time to re-election campaigns, or even macroeconomic regimes that might influence topics covered in a State of the Union speach.
 
 
 ```python

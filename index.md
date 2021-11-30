@@ -28,7 +28,7 @@ Below are some of my recent projects with a few research papers from my undergra
 
 > [Estimating Wildfire Perimeters with Image Segmentation and Filtering Techniques](./wildfire_perimeters.html)   
 
-> [Latent Semantic Indexing for Comparing Simiilarities Between State of the Union Addresses](./lsi.html) 
+> [Latent Semantic Indexing for Comparing Similarities Between State of the Union Addresses](./lsi.html) 
 
 > [Using the Page Rank Algorithm for Constructing a March Madness Bracket](./page_rank.html)  
 
