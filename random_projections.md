@@ -17,7 +17,7 @@ from sklearn.model_selection import ParameterGrid
 from sklearn.ensemble import GradientBoostingClassifier  
 ```
 
-## MAKE SURE ALL TIMES AND MODEL ACCURACIES ARE CORRECT 
+## Commentary coming soon! 
 
 ```python
 def jl_bound(n, eps): 
@@ -128,9 +128,14 @@ Training on randomly projected data took 92.07 seconds to train
 
 ```python
 print("Model Accuracy trained on projected data:    {:.2f}".format(model_proj.score(X_test_proj, y_test)))
-print("Model Accuracy trained on un-projected data: {:.2f}".format(model.score(X_test, y_test))) 
+print("Model Accuracy trained on un-projected data: {:.2f}".format(model.score(X_test, y_test)))
 ``` 
+```
+Model Accuracy trained on projected data:    0.82
+Model Accuracy trained on un-projected data: 0.85
+```
 
+### Now for Comparing to Linear Dimension Reduction with PCA
 
 ```python
 %time U, e, Vt = np.linalg.svd(X_train, full_matrices = False) 
@@ -140,7 +145,6 @@ CPU times: user 1.74 s, sys: 224 ms, total: 1.96 s
 Wall time: 1.07 s 
 ```
 
-
 ```python
 X_train_pc_proj = np.dot(X_train, Vt[: 20].T) 
 X_test_pc_proj = np.dot(X_test, Vt[: 20].T)  
@@ -148,14 +152,15 @@ X_test_pc_proj = np.dot(X_test, Vt[: 20].T)
 start = time() 
 model = GradientBoostingClassifier(loss = "deviance", n_estimators = 100, 
                                    max_depth = 5, min_samples_leaf = 3).fit(X_train_pc_proj, y_train)  
+end = time() 
 
-print("The SVD/PCA projection training took {:.2f} seconds to train".format(time() - start))  
-print("In total, this method took {:.2f} seconds to train".format(1.07 + 70.48))   
-print("The SVD/PCA Projection trained model got {:.2f} accracy".format(model.score(X_test_pc_proj, y_test))) 
+print("Total SVD/PCA projection training took {:.2f} seconds to train.".format(end - start))   
+print("In total, this method took {:.2f} seconds to train.".format(1.07 + 70.48))   
+print("The SVD/PCA Projection trained model got {:.2f} accracy.".format(model.score(X_test_pc_proj, y_test))) 
 ``` 
 
 ```
-The SVD/PCA projection training took 70.48 seconds to train
-In total, this method took 71.55 seconds to train
-The SVD/PCA Projection trained model got 0.81 accracy
+The SVD/PCA projection training took 70.48 seconds to train.
+In total, this method took 71.55 seconds to train.
+The SVD/PCA Projection trained model got 0.81 accracy.
 ```
