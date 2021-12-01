@@ -34,4 +34,4 @@ Wall time: 3.11 s
 <img src="newly_sampled_cryptopunks_trained_on_all_data.jpg" width="1000" height="550"> 
 
 
-I looped through these newly generated images and compared each against all 10,000 original Cryptopunks to confirm they are unique. It’s pretty clear that the newly generated KDEs are very similar to the originals in terms of style, but I think this speaks more to the simplicity of the images than the quality of the model. That being said, KDEs are not to be underestimated! 
+I looped through these newly generated images and compared each against all 10,000 original Cryptopunks to confirm they are unique. It’s pretty clear that the newly generated Cryptopunks are very similar to the originals, but I think this speaks more to the simplicity of the images than the quality of the model. That being said, KDEs are not to be underestimated! 
