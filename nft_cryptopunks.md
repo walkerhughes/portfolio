@@ -13,7 +13,7 @@ NFT stands for non-fungible token. Something that is “fungible” is easily ex
 
 NFTs have become very popular recently and the “Cryptopunks” are some of the most famous ones out there. They're very simple pixelated images of people with funny hats, cool hair, and are often smoking. All of them are made in a very similar style, but each is unique. There are about 10,000 original Cryptopunks and they often sell on OpenSea (an NFT marketplace) for big bucks. 
 
-<img src="nft_samples.jpg" width="1000" height="575"> 
+<img src="nft_samples.jpg" width="1000" height="550"> 
 
 A lot of notebooks I’ve seen of people trying to create original Cryptopunks use models like GANs and other deep learning architectures, but given the simplicity of the images, I can’t help but think this might be overkill.  
 
@@ -31,7 +31,7 @@ Wall time: 3.11 s
 
 Below are a few examples of original Cryptopunks with my new versions sampled from my KDE. 
 
-<img src="newly_sampled_cryptopunks_trained_on_all_data.jpg" width="1000" height="600"> 
+<img src="newly_sampled_cryptopunks_trained_on_all_data.jpg" width="1000" height="550"> 
 
 
 It’s pretty clear that the newly generated KDEs are very similar to the originals in terms of style, but I think this speaks more to the simplicity of the images than the quality of the model. That being said, KDEs are not to be underestimated! 
