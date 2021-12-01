@@ -13,10 +13,10 @@ I currently work as an economic consultant where I conduct rigorous economic res
 
 
 A few other fun facts: 
-1. 2.5 years of daily Python for scientific computing, machine learning, and research projects
+1. 2.5 years of daily Python use for scientific computing, machine learning, and research projects
 2. Worked as a Teaching Assistant for four different courses (Machine Learning for Economists, Econometrics, Intermediate Macroeconomics, and Principles of Economics) 
 3. Worked as an Machine Learning Research Assistant to study wildfire perimeter estimation with image segmentation 
-4. I currently use R and SQL daily for work projects 
+4. Currently use R and SQL daily for work projects 
 
 Below are some of my recent projects with a few research papers from my undergrad interspursed. 
 
