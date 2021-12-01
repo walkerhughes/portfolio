@@ -37,7 +37,6 @@ The following function accepts a GMMHMM as well as an integer n_sim, and which s
 
 
 ```python 
-
 def sample_gmmhmm(gmmhmm, n_sim):
     """
     Simulate from a GMMHMM.
