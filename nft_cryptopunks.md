@@ -13,6 +13,8 @@ NFT stands for non-fungible token. Something that is “fungible” is easily ex
 
 NFTs have become very popular recently and the “Cryptopunks” are some of the most famous ones out there. They're very simple pixelated images of people with funny hats, cool hair, and are often smoking. All of them are made in a very similar style, but each is unique. There are about 10,000 original Cryptopunks and they often sell on OpenSea (an NFT marketplace) for big bucks. 
 
+<img src="nft_samples.jpg" width="1000" height="675"> 
+
 A lot of notebooks I’ve seen of people trying to create original Cryptopunks use models like GANs and other deep learning architectures, but given the simplicity of the images, I can’t help but think this might be overkill.  
 
 I decided to try and use Kernel Density Estimators instead. KDEs are some of my favorite models out there, and they walk the line between unsupervised learning, feature engineering, and data modeling. Using them here basically amounts to estimating the pixel distributions of the Cryptopunks, and then sampling new images from that estimated distribution. 
@@ -29,7 +31,7 @@ Wall time: 3.11 s
 
 Below are a few examples of original Cryptopunks with my new versions sampled from my KDE. 
 
-<img src="nft_samples_trained_on_all_images_2.jpg" width="1000" height="675"> 
+<img src="newly_sampled_cryptopunks_trained_on_all_data.jpg" width="1000" height="675"> 
 
 
 It’s pretty clear that the newly generated KDEs are very similar to the originals in terms of style, but I think this speaks more to the simplicity of the images than the quality of the model. That being said, KDEs are not to be underestimated! 
