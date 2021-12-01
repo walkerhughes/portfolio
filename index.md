@@ -26,6 +26,8 @@ Below are some of my recent projects with a few research papers from my undergra
 
 > [Speech Recognition with Gaussian Mixture Model Hidden Markov Models](./speech_recognition.html)
 
+> [Generating Original Cryptopunk NFT's with Kernel Density Estimates](./nft_cryptopunks.html)
+
 > [Estimating Wildfire Perimeters with Image Segmentation and Filtering Techniques](./wildfire_perimeters.html)   
 
 > [Latent Semantic Indexing for Comparing Similarities Between State of the Union Addresses](./lsi.html) 
