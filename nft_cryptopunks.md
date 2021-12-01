@@ -11,3 +11,9 @@ If you clicked on this, you probably already know what NFTs are.
 
 
 <img src="nft_samples.jpg" width="1000" height="750">
+
+
+<img src="nft_samples.jpg" width="1250" height="750">
+
+
+<img src="nft_samples.jpg" width="1000" height="675">
