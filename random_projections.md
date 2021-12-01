@@ -17,7 +17,17 @@ from sklearn.model_selection import ParameterGrid
 from sklearn.ensemble import GradientBoostingClassifier  
 ```
 
-## Commentary coming soon! 
+## Background On Dimension Reduction (full commentary coming soon!) 
+
+High-dimensional data can be difficult to work with, both because it may take a long time to train a model with, and because many algorithms may suffer from the Curse of Dimensionality (many that rely on Euclidean distance or other similar metrics, and there's a lot of these, are especially vulnerable, since "distance" becomes less meaningful in very high dimensions).   
+
+Principle Component techniques are very useful because they can project a data matrix to lower dimensions while allowing the user to view how much variance from the original data is preserved in this operation. Variance here is valuable information. This is done through the SVD of the data matrix, and is a linear dimension reduction. 
+
+But other methods exist too, and can perform such dimension reduction randomly. I'll use one such method, the Johnson-Lindenstrauss method, and compare it to model accuracy for a ```GradientBoostingClassifier``` with unprojected data and PCA projected data. 
+
+Let's make sure we understand the Johnson-Lindenstrauss method first, which relies on the Johnson-Lindenstrauss lemma stated below. 
+
+
 
 ```python
 def jl_bound(n, eps): 
