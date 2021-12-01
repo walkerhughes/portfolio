@@ -15,7 +15,7 @@ NFTs have become very popular recently and the “Cryptopunks” are some of the
 
 A lot of notebooks I’ve seen of people trying to create original Cryptopunks use models like GANs and other deep learning architectures, but given the simplicity of the images, I can’t help but think this might be overkill.  
 
-I decided to try and use Kernel Density Estimators instead. KDEs are some of my faavorite models out there, and they walk the line between unsupervised learning, feature engineering, and data modeling. Using them here basically amounts to estimating the pixel distributions of the Cryptopunks, and then sampling new images from that estimated distribution. 
+I decided to try and use Kernel Density Estimators instead. KDEs are some of my favorite models out there, and they walk the line between unsupervised learning, feature engineering, and data modeling. Using them here basically amounts to estimating the pixel distributions of the Cryptopunks, and then sampling new images from that estimated distribution. 
 
 Below are a few examples of original Cryptopunks with my new versions sampled from my KDE. 
 
@@ -23,4 +23,4 @@ Below are a few examples of original Cryptopunks with my new versions sampled fr
 
 This was very straightforward, and training the KDE took a matter of seconds, rather than minutes or even hours as a fully architectured Neural Network might take. 
 
-It’s pretty clear that the newly generated KDEs are very similar to the originals in terms of style, but I think this speaks more to the simplicity of the images than the quality of the model. That being said, KDEs are formidable models! 
+It’s pretty clear that the newly generated KDEs are very similar to the originals in terms of style, but I think this speaks more to the simplicity of the images than the quality of the model. That being said, KDEs are not to be underestimated! 
