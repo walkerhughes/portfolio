@@ -46,7 +46,7 @@ Below are some of my recent projects with a few research papers from my undergra
 
 ### Economics and Finance 
 
-> [A Simple Statistical Arbitrage Model Through Pairs Trading](./pairs_trading.html)  
+> [A Simple Statistical Arbitrage Model for Pairs Trading](./pairs_trading.html)  
 
 > [The Effects of COVID-19 Super Spreader Events with Synthetic Controls (Research Paper)](./synth.html) 
 
