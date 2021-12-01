@@ -17,10 +17,19 @@ A lot of notebooks I’ve seen of people trying to create original Cryptopunks u
 
 I decided to try and use Kernel Density Estimators instead. KDEs are some of my favorite models out there, and they walk the line between unsupervised learning, feature engineering, and data modeling. Using them here basically amounts to estimating the pixel distributions of the Cryptopunks, and then sampling new images from that estimated distribution. 
 
+This was very straightforward, and training the KDE took a matter of seconds, rather than minutes or even hours as a fully architectured Neural Network might take. 
+
+```python
+%time kde = KernelDensity().fit(all_images)  
+```
+```
+CPU times: user 3.01 s, sys: 105 ms, total: 3.12 s
+Wall time: 3.11 s
+```
+
 Below are a few examples of original Cryptopunks with my new versions sampled from my KDE. 
 
-<img src="nft_samples 2.jpg" width="1000" height="675"> 
+<img src="nft_samples_trained_on_all_images_2.jpg" width="1000" height="675"> 
 
-This was very straightforward, and training the KDE took a matter of seconds, rather than minutes or even hours as a fully architectured Neural Network might take. 
 
 It’s pretty clear that the newly generated KDEs are very similar to the originals in terms of style, but I think this speaks more to the simplicity of the images than the quality of the model. That being said, KDEs are not to be underestimated! 
