@@ -30,6 +30,9 @@ This was very straightforward, and training the KDE took a matter of seconds, ra
 CPU times: user 3.01 s, sys: 105 ms, total: 3.12 s
 Wall time: 3.11 s
 ```
+```
+generated_cryptopunks = kde.sample(40) 
+```
 
 <img src="newly_sampled_cryptopunks_trained_on_all_data.jpg" width="1000" height="550"> 
 
