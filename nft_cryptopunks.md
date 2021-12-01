@@ -10,10 +10,21 @@ layout: default
 If you clicked on this, you probably already know what NFTs are. 
 
 
-<img src="nft_samples.jpg" width="1000" height="750">
+<img src="nft_samples.jpg" width="1000" height="600">
 
 
-<img src="nft_samples.jpg" width="1250" height="750">
+<img src="nft_samples.jpg" width="1000" height="650">
 
 
 <img src="nft_samples.jpg" width="1000" height="675">
+
+NEW ONES 
+
+
+<img src="nft_samples 2.jpg" width="1000" height="600">
+
+
+<img src="nft_samples 2.jpg" width="1000" height="650">
+
+
+<img src="nft_samples 2.jpg" width="1000" height="675">
