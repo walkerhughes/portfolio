@@ -61,7 +61,7 @@ plt.show()
 
 <img src="lorenz_1.jpg" width="750" height="700">
 
-Now we'll plot three solutions to the Lorernz Equations, each with a slightly different initial condition. 
+Now we'll plot three solutions to the Lorenz Equations, each with a slightly different initial condition. 
 
 ```python
 # init plot figure 
