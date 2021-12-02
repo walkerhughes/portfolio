@@ -9,7 +9,7 @@ Hi, I'm Walker. I'm a computational mathematician, economist, and San Franciscan
 I currently work as an economic consultant where I conduct rigorous economic research to study market efficiency, monopoly power, and various other things. A typical day on the job involves exploring large financial and commerce datasets with SQL, digging in even deeper with R, and writing up my findings for client-ready exhibits and expert reports used in federal level litigation.   
 
 
-<p>Feel free to find me on <a href="https://www.linkedin.com/in/walker-hughes/">LinkedIn</a> or take a look at my <a href="./Hughes, Walker.pdf">resume</a> for more info.</p>
+<p>Feel free to find me on <a href="https://www.linkedin.com/in/walker-hughes/">LinkedIn</a></p>
 
 
 A few other fun facts: 
