@@ -16,7 +16,7 @@ Here I implement the Lorenz equations:
 
 where x_t indicates the derivative of x with respect to t, and σ, ρ, and β are constants. 
 
-For appropriately chosen values of σ, ρ, and β, the solutions did not tend to a fixed point, nor did the system tend to toward infnity either. This phenomena came to be called chaotic behavior, and the system exhibited a "strange attractor" that solutions converrged to. 
+For appropriately chosen values of σ, ρ, and β, Lorenz found that the solution to these equations did not tend to a fixed point, nor did the system tend to toward infnity either. Lorenz came to refer to this phenomena as chaotic behavior, and described how the system exhibited a "strange attractor" that the solutions converged to. 
 
 Here we'll let σ=10, ρ=28, and β=8/3 and use `scipy.integrate.odeint` to compute the solution.
 
@@ -94,14 +94,14 @@ plt.show()
 
 The Lyapunov exponent of a dynamical system is one measure of how chaotic a system is. While
 there are more conditions for a system to be considered chaotic, one of the primary indicators of
-a chaotic system is extreme sensitivity to initial conditions. Strictly speaking, this is saying that
+a chaos is extreme sensitivity to initial conditions. Strictly speaking, this is saying that
 a chaotic system is poorly conditioned. In a chaotic system, the sensitivity to changes in initial
 conditions depends expoentially on the time the system is allowed to evolve. If δ(t) represents the
-dierence between two solution curves, when δ(t) is small, the following approximation holds
+diverence between two solution curves, when δ(t) is small, the following approximation holds
 
 <p><span class="math display">\[||\delta(t)|| ∼ ||\delta(0)|| e^{\lambda t}\]</span></p>  
 
-where lambda is a constant called the Lyapunov exponent. In other words, the log of delta t is approximately linear as a function of time, with slope lambda, so we can estimate this through linear regression. A positive Lyapunov exponent indicates chaos is present in the system. 
+where lambda is a constant called the Lyapunov exponent. In other words, the log of δ(t) is approximately linear as a function of time, with slope lambda, so we can estimate this through linear regression. A positive Lyapunov exponent indicates chaos is present in the system. 
 
 ```python
 # init solution to find point in attractor 
