@@ -80,10 +80,10 @@ That said, let's apply this to a more practical example.
 
 The Normal Distribution appears all over the place in applied mathematics, statistics, machine learning, and virtually all other quantitative fields. Yet, it has noo closed-form solution for its Cumulative Distribution Function, which is the integral of its PDF. Luckily, we can use Monte Carlo for this integration. 
 
-The pdf for an n-dimensional joint Standard Normal distribution (mean of 0 and staandard deviation of 1) is as follows 
+The pdf for an n-dimensional joint Standard Normal distribution (mean of 0 and standard deviation of 1) is as follows 
 
 
-<p><span class="math display">\[f(x) = \frac{1}{2\pi^{\frac{n}{2} e ^ {\frac{-x^{T}x}{2}}  \]</span></p> 
+<p><span class="math display">\[ f(x) = \frac{1}{{2\pi}^{\frac{n}{2}}} e ^ {\frac{-x^{T}x}{2}}  \]</span></p> 
 
 
 
