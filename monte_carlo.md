@@ -82,6 +82,7 @@ The Normal Distribution appears all over the place in applied mathematics, stati
 
 The pdf for an n-dimensional joint Standard Normal distribution (mean of 0 and standard deviation of 1) is as follows 
 
+<p><span class="math display">\[ f(x) = \frac{1}{2 \pi ^ {n/2}} e ^{-\frac{x^T x}{2}} \]</span></p> 
 
 
 I'll integrate this in 4-dimensional space on the domain [-1.5, 0.75]x[0, 1]x[0, 0.5]x[0, 1] and compare my estimates with the "true" estimates from the `scipy.stats.mvn.mvnun()` method to demonstrate how the error proportional to N^(-1/2). 
