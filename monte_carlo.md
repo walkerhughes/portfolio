@@ -27,7 +27,6 @@ This explanation is taken from a text from the BYU ACME curriculum.
 
 
 
-
 ### The n-Ball 
 
 The open unit n-Ball is a ball that exists in n-dimensional space with radius 1. In one dimension this is a point, in two dimensions this is a circle, a sphere in 3 dimensions, and so on. In terms of set notation, we have 
@@ -71,12 +70,15 @@ True value of unit sphere:            4.189
 Estimated volume of a unit 4-ball is: 4.91504
 ```
 
-Our estimates improve as we sample more points to use, but this increases the temporal compllexity of the routine greatly. That said, this performed fairly well for an open unit n-Ball, but let's apply this to a more realistic example.
+This performed fairly well for an open unit n-Ball, but our estimates improve as we sample more points to use. Sampling more points greatly increases the temporal complexity of the routine, however. The error of this method is actually proportional to N^(-1/2), where N
+is the number of points we sample. Thus, dividing the error by 10 requires 100 times more sample points. When precision is highly important, this may be temporally prohibitive (or would require some parallelization). That saaid, let's apply this to a more practical example.
 
 
 ### Integrating the Standard Normal Probability Density Function 
 
 The Normal Distribution appears all over the place in applied mathematics, statistics, machine learning, and virtually all other quantitative fields. Yet, it has noo closed-form solution for its Cumulative Distribution Function, which is the integral of its PDF. Luckily, we can use Monte Carlo for this integration. 
+
+
 
 
 
