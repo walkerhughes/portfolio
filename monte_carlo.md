@@ -78,20 +78,39 @@ That said, let's apply this to a more practical example.
 
 ### Integrating the Standard Normal Probability Density Function 
 
-The Normal Distribution appears all over the place in applied mathematics, statistics, machine learning, and virtually all other quantitative fields. Yet, it has noo closed-form solution for its Cumulative Distribution Function, which is the integral of its PDF. Luckily, we can use Monte Carlo for this integration. 
+The Normal Distribution appears all over the place in applied mathematics, statistics, machine learning, and virtually all other quantitative fields. Yet, it has no closed-form solution for its Cumulative Distribution Function, which is the integral of its PDF. Luckily, we can use Monte Carlo for this integration. 
 
 The pdf for an n-dimensional joint Standard Normal distribution (mean of 0 and standard deviation of 1) is as follows 
-
 
 <p><span class="math display">\[ f(x) = \frac{1}{{2\pi}^{\frac{n}{2}}} e ^ {\frac{-x^{T}x}{2}}  \]</span></p> 
 
 
-
-
-
+I'll integrate this in 4-dimensional space on the domain [-1.5, 0.75]x[0, 1]x[0, 0.5]x[0, 1] and compare my estimates with the "true" estimates from the `scipy.stats.mvn.mvnun()` method to demonstrate how the error proportional to N^(-1/2). 
 
 ```python 
+def mc_integrate(f, mins, maxs, num_samples = 10000):
+    """
+    Approximate the integral of f over the box defined by mins and maxs.
 
+    Parameters:
+        f (function): The function to integrate. 
+        mins (list): the lower bounds of integration.
+        maxs (list): the upper bounds of integration.
+        N (int): The number of random points to sample.
+    Returns:
+        (float): An approximation of the integral of f over the domain.
+    """
+    # take the measure of the set we integrate over
+    measure = np.product([maxs[i] - mins[i] for i in range(len(mins))])
+    
+    # saample a grid of points  
+    points = np.array([np.random.uniform(a, b, (1, num_samples)) for a, b in zip(mins, maxs)])[:, 0]
+    
+    # sum the points together 
+    f_sum = np.sum([f(points[:, i]) for i in range(len(points[0]))])
+    
+    # multiply by measure and divide by num_samples 
+    return measure * f_sum / num_samples  
 ```
 
 ```python 
