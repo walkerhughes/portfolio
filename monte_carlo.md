@@ -114,18 +114,21 @@ def mc_integrate(f, mins, maxs, num_samples = 10000):
 ```
 
 ```python 
-points = [int(i) for i in np.logspace(1, 5, 20)] # logspace points 
-    
+# get points in logspace 
+points = [int(i) for i in np.logspace(1, 5, 20)] 
+
+# dedfine the standard normal pdf for 4 dimensions 
 f = lambda x: (1 / (2*np.pi)**(2)) * np.exp(-0.5*np.dot(x.T, x)) 
 mins = [-3/2, 0, 0, 0] 
 maxs = [3/4, 1, 1/2, 1]  
     
-means, cov = np.zeros(4), np.eye(4) # take means, cov for scipy 
-truth = scipy.stats.mvn.mvnun(mins, maxs, means, cov)[0] # calculate "true" integral value 
-    
-vals = [mc_integrate(f, mins, maxs, N = n) for n in points] # integrate at various points 
-errors = [(abs(truth - val) / truth) for val in vals] # calculate relative errors 
-roots = 1 / np.sqrt(points) # take 1 / root of our N values for comparison 
+# calculate "true" integral value from scipy 
+truth = scipy.stats.mvn.mvnun(mins, maxs, np.zeros(4), np.eye(4))[0]  
+
+# get estimated values and compare against the truth 
+vals = [mc_integrate(f, mins, maxs, N = n) for n in points] 
+errors = [(abs(truth - val) / truth) for val in vals] 
+roots = 1 / np.sqrt(points)   
     
 # plot relative errors an 1/sqrt(N) for each N 
 plt.loglog(points, errors, label = "Errors")
@@ -138,5 +141,7 @@ plt.show()
 ```
 
 <img src="relative_errors.jpg" width="900" height="550"> 
+
+
 
 
