@@ -26,9 +26,7 @@ The open unit n-Ball is a ball that exists in n-dimensional space with radius 1.
 
 <p><span class="math display">\[U_n = \{x\in R^n : ||x||_2 < 1\} \]</span></p> 
 
-
-We can easily find the volume of any open n-ball with Monte Carlo integration. 
-
+We can easily find the volume of any open n-ball with Monte Carlo integration. The basic idea is to sample uniformly over the domain for integration, apply our function restrictions to those sampled points, and find the portion of points sampled in that domain that meet the restriction that r<1, or that the sampled points have a 2-norm from the origin strictly less than 1. Lucky for us, we know that the volume of [-1, 1] x [-1, 1] x ... x [-1, 1] n times is 2^n. I implement this below. 
 
 ```python 
 def ball_volume(n, num_samples = 10000):
@@ -57,14 +55,18 @@ print("Estimated volume of unit sphere: {:.3f}".format(ball_volume(n = 3, N = 10
 
 print("True value of unit sphere:       {:.3f}".format((4 / 3) * np.pi))
 
-print("Estimated volume of a unit 4-dimensional ball is: {}".format(ball_volume(n = 4, N = 10**5))) 
+print("Estimated volume of a unit 4-ball is: {}".format(ball_volume(n = 4, N = 10**5))) 
 ```
-
 ```
 Estimated volume of unit sphere:      4.183
 True value of unit sphere:            4.189
 Estimated volume of a unit 4-ball is: 4.91504
 ```
+
+So this performed fairly well for an open unit n-Ball. But let's apply this to a more realistic example. 
+
+### Integrating the Standard Normal Probability Density Function 
+
 
 ```python 
 

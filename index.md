@@ -40,7 +40,7 @@ Below are some of my recent projects with a few research papers from my undergra
 
 > [Looking at Chaotic Systems and the Lorenz Equations](./lorenz_equations.html) 
 
-> [Integrating Multivariate Functions with Monte Carlo Methods](./monte_carlo.html) 
+> [Integrating the Standard Normal PDF with Monte Carlo Sampling](./monte_carlo.html) 
 
 > [Using Quadratic Interior Point Optimization for Raising Circus Tents](./interior_point_methods.html)
 
