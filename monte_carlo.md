@@ -23,14 +23,8 @@ A simple example oof how this is useful is when estimating pi. Pi is an irration
 
 This explanation is taken from a text from the BYU ACME curriculum. 
 
-1
-<img src="integration.jpg" width="1000" height="700">
-2
-<img src="integration.jpg" width="1000" height="800">
-3
-<img src="integration.jpg" width="750" height="500">
-4
-<img src="integration.jpg" width="750" height="600">
+<img src="integration.jpg" width="900" height="550"> 
+
 
 
 
