@@ -70,13 +70,20 @@ True value of unit sphere:            4.189
 Estimated volume of a unit 4-ball is: 4.91504
 ```
 
+#### Quick Note on Errors and Convergence 
 This performed fairly well for an open unit n-Ball, but our estimates improve as we sample more points to use. Sampling more points greatly increases the temporal complexity of the routine, however. The error of this method is actually proportional to N^(-1/2), where N
-is the number of points we sample. Thus, dividing the error by 10 requires 100 times more sample points. When precision is highly important, this may be temporally prohibitive (or would require some parallelization). That saaid, let's apply this to a more practical example.
+is the number of points we sample. Thus, dividing the error by 10 requires 100 times more sample points. When precision is highly important, this may be temporally prohibitive (or would require some parallelization). However, the convergence rate for Monte Carlo integration actually independent of the number of dimensions we're integrating over. Thus, the error for our estimations converges at the same rate when integrating a 2-dimensional function or a 100-dimensional function. This makes Monte Carlo integration preferable over many other machine-integration methods. 
 
+That said, let's apply this to a more practical example.
 
 ### Integrating the Standard Normal Probability Density Function 
 
 The Normal Distribution appears all over the place in applied mathematics, statistics, machine learning, and virtually all other quantitative fields. Yet, it has noo closed-form solution for its Cumulative Distribution Function, which is the integral of its PDF. Luckily, we can use Monte Carlo for this integration. 
+
+The pdf for an n-dimensional joint Standard Normal distribution (mean of 0 and staandard deviation of 1) is as follows 
+
+
+<p><span class="math display">\[f(x) = \frac{1}{2\pi^{\frac{n}{2} e ^ {\frac{-x^{T}x}{2}}  \]</span></p> 
 
 
 
