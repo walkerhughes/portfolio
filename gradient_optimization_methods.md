@@ -19,7 +19,7 @@ Vanilla gradient descent methods can easily be improved when an appropriate sear
 The conjugate gradient algorithm uses a similar method but can converge much faster. I'll implement both a steepest descent and a conjugate gradient routine here. 
 
 
-### Steepest Descent 
+### Steepest Descent Method 
 
 For this iterative method, we proceed similarly to vanilla gradient descent with an initial guess for the minimizer x0, but at each step we find an appropriate step size "alpha' for the following intermediate minimizer
 <p><span class="math display">\[x_{k+1} = x_k - \alpha_k Df(X_k)^T\]</span></p>
@@ -88,6 +88,7 @@ Converged to [9.24407773e-10 9.24407773e-10 9.24407773e-10] in 1 iteration(s)
 All close to [0, 0, 0] ? --> True
 ```
 
+### Conjugate Gradient Method 
 
 
 The steepest descent method isn't always the best though, and can often get stuck in local minimums and flat areas. The conjugate gradient method, on the other hand, chooses a search direction that is guaranteed to be a direction of descent (thus avoiding getting stuck in a flat area), but not necessarily the steepest descent direction. 
