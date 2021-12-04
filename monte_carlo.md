@@ -19,6 +19,20 @@ import matplotlib.pyplot as plt
 
 Many multivariate functions like the Standard Normal Distribution's pdf cannot be symbolically integrated because their antiderivative does not exist. Quadrature methods are useful in most one-dimensional settings, but do not provide robust integrations in high-dimensions. Monte Carlo sampling provides an efficient (albeit slow) solution for high dimensional integration. 
 
+A simple example oof how this is useful is when estimating pi. Pi is an irrational number, so its decimal expansion continues infinitely. We can still estimate it though, oone way being through Monte Carlo integration. We know the area of a circle is A = pi*r^2, where r is the circle radius. If r = 1 then, we have that the area is simply equal to pi itself. Intuitively, if we sample uniformly from a unit square centered at (0, 0), we can estimate pi as the ratio of sampled points from the unit square that fall within a circle with radius 1 inscribed in the square. Adjusting for the measure of the set we sampled from gives us our estimate. 
+
+This explanation is taken from a text from the BYU ACME curriculum. 
+
+1
+<img src="integration.jpg" width="1000" height="700">
+2
+<img src="integration.jpg" width="1000" height="800">
+3
+<img src="integration.jpg" width="750" height="500">
+4
+<img src="integration.jpg" width="750" height="600">
+
+
 
 ### The n-Ball 
 
@@ -63,9 +77,14 @@ True value of unit sphere:            4.189
 Estimated volume of a unit 4-ball is: 4.91504
 ```
 
-So this performed fairly well for an open unit n-Ball. But let's apply this to a more realistic example. 
+Our estimates improve as we sample more points to use, but this increases the temporal compllexity of the routine greatly. That said, this performed fairly well for an open unit n-Ball, but let's apply this to a more realistic example.
+
 
 ### Integrating the Standard Normal Probability Density Function 
+
+The Normal Distribution appears all over the place in applied mathematics, statistics, machine learning, and virtually all other quantitative fields. Yet, it has noo closed-form solution for its Cumulative Distribution Function, which is the integral of its PDF. Luckily, we can use Monte Carlo for this integration. 
+
+
 
 
 ```python 
