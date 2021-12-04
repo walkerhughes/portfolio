@@ -24,11 +24,10 @@ Many multivariate functions like the Standard Normal Distribution's pdf cannot b
 
 The open unit n-Ball is a ball that exists in n-dimensional space with radius 1. In one dimension this is a point, in two dimensions this is a circle, a sphere in 3 dimensions, and so on. In terms of set notation, we have 
 
-
 <p><span class="math display">\[U_n = \{x\in R^n : ||x||_2 < 1\} \]</span></p> 
 
 
-Luckily, we can easily implement this through code. 
+We can easily find the volume of any open n-ball with Monte Carlo integration. 
 
 
 ```python 
@@ -47,19 +46,24 @@ def ball_volume(n, num_samples = 10000):
     # uniformly sample a grid of points in n dimensions 
     points = np.random.uniform(-1, 1, (n, num_samples))  
 
-    # take norms from origin (these is how we enforce r < 1)  
+    # take norms from origin (this is how we enforce r < 1)  
     lengths = la.norm(points, axis = 0)
 
     # return our estimated volume via integration  
-    return 2**n * np.count_nonzero(lengths <= 1) / num_samples 
+    return 2**n * np.count_nonzero(lengths < 1) / num_samples 
+```
+```python 
+print("Estimated volume of unit sphere: {:.3f}".format(ball_volume(n = 3, N = 10**6)))
+
+print("True value of unit sphere:       {:.3f}".format((4 / 3) * np.pi))
+
+print("Estimated volume of a unit 4-dimensional ball is: {}".format(ball_volume(n = 4, N = 10**5))) 
 ```
 
-```python 
-
 ```
-
-```python 
-
+Estimated volume of unit sphere:      4.183
+True value of unit sphere:            4.189
+Estimated volume of a unit 4-ball is: 4.91504
 ```
 
 ```python 
