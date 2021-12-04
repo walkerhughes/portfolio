@@ -25,7 +25,7 @@ Many multivariate functions like the Standard Normal Distribution's pdf cannot b
 The open unit n-Ball is a ball that exists in n-dimensional space with radius 1. In one dimension this is a point, in two dimensions this is a circle, a sphere in 3 dimensions, and so on. In terms of set notation, we have 
 
 
-<p><span class="math display">\[U_n = {x\in R^n : ||x||_2 < 1>} \]</span></p> 
+<p><span class="math display">\[U_n = \{x\in R^n : ||x||_2 < 1\} \]</span></p> 
 
 
 Luckily, we can easily implement this through code. 
