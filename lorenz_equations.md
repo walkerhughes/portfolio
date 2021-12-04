@@ -61,7 +61,9 @@ plt.show()
 
 <img src="lorenz_1.jpg" width="750" height="700">
 
-Now we'll plot three solutions to the Lorenz Equations, each with a slightly different initial condition. 
+We can clearly see these "strange attractors" that Lorenz described, they're the big swirls in our solution curves that don't approach a specific point, but also don't diverge off to infinity. 
+
+A hallmark of chaotic systems is that the solution curve is highly dependent on the coice of initial condition, however. To show this, I'll plot three solutions to the Lorenz Equations, each with a slightly different initial condition sampled from the uniform distribution on [-15, 15]. 
 
 ```python
 # init plot figure 
