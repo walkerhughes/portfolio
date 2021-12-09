@@ -13,14 +13,14 @@ from scipy import linalg as la
 ```
 
 ### Initial Motivation 
+
 Many real-world systems can be modeled as networks and codified as directed graphs. These are easily storable as arrays in python, and the PageRank Algorithm is a way to rank the nodes in these networks by importance. Here I implement the PageRank Algorithm to rank NCAA basketball teams going into March Madness on the basis of the teams they each played against and how many times they won or lost against each team. 
 
-We’ll take the following approach, representing the outcomes of these games as an adjacency matrix A. This will list all of the N teams we are concerned with and numerically represent these pairings as an N x N array where the columns and rows indicate a specific team. As an example, for any two teams i and j, node-i,j in our adjacency matrix will represent the number of times that team i beat team j prior to March Madness as an integer value. Likewise, node-j,i in the adjacency matrix  will be the number of times that team j beat team i prior to March Madness. To fix the problem of “sinks” in the matrix. These are locations where a team did not play against any of the other teams in the NCAA. For example, for team i, node-i,i will be a 0, which is mathematically undesirable for our algorithm. We’ll replace any column of row where this occurs with a column or row of all ones. 
+We’ll take the following approach, representing the outcomes of these games as an adjacency matrix A. This will list all of the N teams we are concerned with and numerically represent these pairings as an N x N array where each column and row indicates a specific team. As an example, for any two teams i and j, node-i,j in our adjacency matrix will represent the number of times that team i beat team j prior to March Madness as an integer value. Likewise, node-j,i in the adjacency matrix  will be the number of times that team j beat team i prior to March Madness. To fix the problem of “sinks” in the matrix. These are locations where a team did not play against any of the other teams in the NCAA. For example, for team i, node-i,i will be a 0, which is mathematically undesirable for our algorithm. We’ll replace any column or row where this occurs with a column or row of all ones. 
 
-We can extend our use of a simple adjacency matrix though to incorporate the relative amount of wins each team had against any other.  This is done by finding the percentage of a team’s  total wins represented by their wins against each of their components. This is meaningful since knowing if a team i is relatively more likely to win against another team j does not rely on the total number of games a team played in a season, and not all teams in our data played the same number of games.
+We can extend our use of a simple adjacency matrix to incorporate the relative amount of wins each team had against any other.  This is done by finding the percentage of a team’s total wins represented by their wins against each of their oponents. This is meaningful since knowing if a team i is relatively more likely to win against another team j does not rely on the total number of games a team played in a season, and not all teams in our data played the same number of games.
 
-I implement a class called ```DiGraph``` that accepts an Adjacency Matrix A, eliminates any "sinks" init, and then finds the relative frequency of a team's wins against any other team (stored as A-hat). We can then run the PageRank Algorithm on A-hat. 
-
+I implement a class called ```DiGraph``` that accepts an Adjacency Matrix A, eliminates any "sinks" in it, and then finds the relative frequency of a team's wins against any other team (stored as A-hat). We can then run the PageRank Algorithm on A-hat. 
 
 ```python 
 class DiGraph:
@@ -151,7 +151,7 @@ print(graph.itersolve())
 {'a': 0.09575863576738085,'b': 0.2741582859641452,'c': 0.3559247923043289,'d': 0.2741582859641452}
 ```
 
-Since these methods all agree, we can move onto actually ranking nodes based on this vector. This is really the key part of the ranking system, since it translates our steady-state vector into an actionable label. It's very simple: sort the labels associated with the steady-state vector acording to their numeric value in decreasing order.  
+Since all three methods agree, we can move onto actually ranking nodes based on this vector. This is really the key part of the ranking system, since it translates our steady-state vector into an actionable label. It's very simple: sort the labels associated with the steady-state vector acording to their numeric value in decreasing order.  
 
 ```python 
 def get_ranks(d):
@@ -238,6 +238,6 @@ rank_ncaa_teams(filename = "ncaa2010.csv", epsilon = 0.85)[: 3]
 
 For 2010, this performed well! UConn won the national championship, Kentucky was a semifinalist, and Louisville was ranked very highly going into the tournament. 
 
-The PageRank method can be extended to any number of applications, including ranking internet pages based on the hyperlinks between them, or ranking musicians based on who they have collaborated with. The ```NetworkX``` library has an efficient implementation of the PageRank algorithm that is robust to large networks, but implementing this from scratch was a fun and instructive way to better understand the inner workings of the algorithm and see a cool use case of markov chains. 
+The PageRank method can be extended to any number of applications, including ranking internet pages based on the hyperlinks between them, or ranking musicians based on who they have collaborated with. The ```NetworkX``` library has an efficient implementation of the PageRank algorithm that is robust to large networks, but implementing this from scratch was a fun and instructive way to better understand the inner workings of the algorithm and see a cool use case for Markov Chains. 
 
 [back](./)
