@@ -21,59 +21,56 @@ import pickle
 from tqdm import tqdm 
 ```
 
-Speech recognition is a cool application of Hidden Markov Models when we allow the state space to be continuous rather than discrete - Continuous Density Hidden Markov Models. Here I use a simple implementation of one type of these, the Gaussian Mixture Model Hidden Markov Model, to classify audio clips of 5 different words.  
+Speech recognition is a cool application of Hidden Markov Models when we allow the state space to be continuous rather than discrete, a subclass of models called Continuous Density Hidden Markov Models. Here I use a simple implementation of one type of these, the Gaussian Mixture Model Hidden Markov Model, to classify audio clips of 5 different words.  
 
-A mixture of Gaussians is a distribution composed as a linear combination of M Gaussian (or Normal) distributions. Here we will try to classify sound bits of 5 different words being said, so we will take M = 5. Our model then becomes: 
+This type of model essentially amounts to estimating a mixture of Gaussians. This is a distribution composed as a linear combination of M Gaussian (or Normal) distributions, one for each state in the state space. Here we will try to classify sound bits of 5 different words being said, so we will take M = 5. Our model then becomes: 
 
 <p><span class="math display">\[f(x) = \sum_{i = 1} ^{M} c_i N(x; \mu_i, \Sigma_i)\]</span></p> 
 
-In a GMMHMM, we seek to model a sequence of hidden (unobserved) states {x1, . . . , xT} and corresponding
-sequence of observations {O1, . . . , OT} where each observation Oi is a vector of length K distributed according to a mixture of Gaussians with M components. The parameters for this type of model include the initial state distribution
+In a GMMHMM, we seek to model a sequence of hidden (unobserved) states {x_1, . . . , x_M} and corresponding
+sequence of observations {O_1, . . . , O_T} where each observation O_i is a vector of length K distributed according to a mixture of Gaussians with M components. The parameters for this type of model include the initial state distribution
 π and the state transition matrix A. Also, for each state i, we have an assciated set of parameters 
 
 <p><span class="math display">\[i = {1, ..., M}, (c_i, \mu_i, \Sigma_i)\]</span></p> 
 
-The following function accepts a GMMHMM as well as an integer n_sim, and which simulates the GMMHMM process, generating n_sim different observations. 
-
+The following function accepts a GMMHMM as well as an integer num_samples, and which simulates the GMMHMM process, generating num_samples different observations. 
 
 ```python 
-def sample_gmmhmm(gmmhmm, n_sim):
+def sample_gmmhmm(gmmhmm, num_samples):
     """
-    Simulate from a GMMHMM.
+    Sample from a GMMHMM.
     
     Returns
     -------
-    states : ndarray of shape (n_sim,)
+    states : ndarray of shape (num_samples,)
         The sequence of states
-    obs : ndarray of shape (n_sim, K)
+    obs : ndarray of shape (num_samples, K)
         The generated observations (vectors of length K)
     """
     A, weights, means, covars, pi = gmmhmm 
-    states, obs = np.zeros(n_sim), np.zeros((n_sim, len(weights[0]))) 
+    states, obs = np.zeros(num_samples), np.zeros((num_samples, len(weights[0]))) 
          
-    for i in range(n_sim): 
+    for i in range(num_samples): 
         # choose initial state
         state = np.argmax(np.random.multinomial(1, pi))
         # randomly sample
-        sample_component = np.argmax(np.random.multinomial(1, weights[state,:])) 
+        sample_component = np.argmax(np.random.multinomial(1, weights[state, :])) 
         sample = np.random.multivariate_normal(means[state, sample_component, :], 
                                               covars[state, sample_component, :, :])
         # update states and obs arrays   
         states[i], obs[i] = state, sample                                
                                                
     return states, obs
-
 ```
 
-
-Most speech recognition models don't actually recognize words, they recognize the distinct sounds produced by a language, which are called phonemes. English has 44 unique phonemes, and thus each word can be represented as a combination of some subset of these 44 sounds. A robust speech recognition model could have 44 distinct GMMHMMs, one for each distinct phoneme. 
+Many speech recognition models don't actually recognize words, they recognize the distinct sounds produced by a language, which are called phonemes. English has 44 unique phonemes, and thus each word can be represented as a combination of some subset of these 44 sounds. A robust speech recognition model could have 44 distinct GMMHMMs, one for each distinct phoneme. 
 
 Before we can go further, audio data takes a good amount of pre-processing, and we will be representing each audio clip by its mel-frequency cepstral coefficients (MCFFs). We can train a GMMHMM on various audio clips or MFCCs for a given word, and by doing this for several words, we form a collection
 of GMMHMMs, one for each word. For a new speech signal, after decomposing it
 into its MFCC array, we can score the signal against each GMMHMM, returning the word whose
 GMMHMM scored the highest. 
 
-Below we extract the MFCC's for each of our words and store them in a dictionary. 
+Below we extract the MFCC's for each of our words and store them in a dictionary for easy retrieval. 
 
 ```python 
 # skip the repeats, keep the mels in mels dict 
@@ -105,7 +102,7 @@ for l in [bio, math, polysci, psych, stats]:
 30 30 30 30 30
 ```
 
-Now let's actually train the model! With enough examples of MCFF's for each word, we can train a separate GMMHMM for each word. We'll use this collection of GMMHMM's to recognize words by their audio when decomposed into their MCFF arrays. 
+Now let's actually train the model. With enough examples of MCFF's for each word, we can train a separate GMMHMM for each word. We'll use this collection of GMMHMM's to recognize words by their audio when decomposed into their MCFF arrays. 
 
 For each word, we will train 10 separate GMMHMM models, and use the model that has the highest log-likelihood. For each GMMHMM, we will use 5 states with 3 mixture components. 
 
@@ -170,7 +167,6 @@ for index, (word, sample) in enumerate(zip(words, samples)):
 
     print("Accuracy for {}: \t{:.2f}%".format(word, acc))
 ```
-
 ```
 Accuracy for Biology: 		100.00%
 Accuracy for Mathematics: 	100.00%
