@@ -13,16 +13,13 @@ import string
 import numpy as np
 from math import log
 from scipy import sparse
-from sklearn import datasets
 from scipy import linalg as la
 from collections import Counter
 from matplotlib import pyplot as plt
 from scipy.sparse import linalg as spla
-from sklearn.pipeline import Pipeline
 ```
 
-Latent Semantic Indexing involves using PCA to reduce the dimensionality of a large corpus of text documents and 
-allows us to determine the similarity between two documents' contents. We can represent these documents numerically with a bag of words approach. We first create an ordered set of vocabulary words used in all the documents we are interested in, then cast each document to a numeric vector where the i-th element in each vector is how many times word i appeared in that document. For a set of n documents and vocabulary of m words, this gives us an n x m matrix. 
+Latent Semantic Indexing allows us to study a large corpus of text documents and determine the similarity between two documents' contents. We can represent these documents numerically with a bag of words approach. We first create an ordered set of vocabulary words used in all the documents we are interested in, then cast each document to a numeric vector where the i-th element in each vector is how many times word i appeared in that document. For a set of n documents and vocabulary of m words, this gives us an n x m matrix. 
 
 For a large set of documents and words, this matrix is likely to be both very large and sparse. We can use PCA to reduce the dimension of the data, but we don't scale the matrix in order to retain this sparsity. 
 
@@ -33,7 +30,6 @@ Thus, finding the document most similar to document i is a matter of finding
 <p><span class="math display">\[argmax_{j\neq i} \frac{< x_i, x_j >}{||x_i|| ||x_j||} \]</span></p> 
 
 This is implemented in the function below. It's also worth noting that this is implicitely assuming that word frequency distributions are sufficient for comparing semantics. Other models might build on this by incorporating author-specific factors like political affiliation, time to re-election campaigns, or even macroeconomic regimes that might influence topics covered in a State of the Union speach.
-
 
 ```python
 def similar(i, Xhat):
@@ -65,7 +61,7 @@ def similar(i, Xhat):
 
 Now that we understand how we can mathematically compare written text, let's dig a little deeper into our bag of words approach. Simple bag of words methods can be too simplistic since mere word counts make no comment on how important a word may be in the context of a document (and to every text there is a context!). Most all documents will contain a set of very similar words that are used very often (like, a, the, and, etc) and which contribute little to our overall understanding of the content of the document's semantics. 
 
-More specific words may contain a high information content even if they are not mentioned many times in a document. For example, speaches that mention OPEC and inflation in the 80's are likely to be more related than speeches that just mention "oil." It would make sense that we would need to be able to implement a global weighting over the entire corpus of words to emphasize these feaatures. 
+More specific words may contain a high information content even if they are not mentioned many times in a document. For example, speaches that mention "OPEC" and "inflation" are likely to be more related than speeches that just mention "oil." It would make sense that we would need to be able to implement a global weighting over the entire corpus of words to emphasize these feaatures. 
 
 Below I implement a naive bag of words approach to LSI with no global weighting on the words in our corpus, and then I implement a globally weighted version as well as explained below. The function `document_converter` implements the unweighted version by  creating a set of the unique words in all State of the Union Addresses we have, and filters out very common words such as "like," "the," "and," and so on. It also filters punctuation. It returns a matrix X as described above, then I implement PCA through the SVD.   
 
@@ -188,6 +184,6 @@ print(weighted_lsi(speech))
 ('1994-Clinton.txt', '1951-Truman.txt')
 ```
 
-One weakness of LSI is that it isnt necessarily robust to adding new documents to the corpus and total vocabulary used. For each new document we wish to include, we'd ideally update our global weights and use the updated document matrix when computing the cosine similarities between documents. Overeall though, LSI is very useful and tons of information retrieval systems rely on similar methods. 
+One weakness of LSI is that it isnt necessarily robust to adding new documents to the corpus and total vocabulary used. For each new document we wish to include, we'd ideally update our global weights and use the updated document matrix when computing the cosine similarities between documents. Overall though, LSI is very useful and many information retrieval systems rely on similar methods. 
 
 [back](./)
