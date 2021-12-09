@@ -88,6 +88,8 @@ while len(new_data) < 50:
         print("Sampled image not true original NFT")
 ```
 
+Below are a few examples of my generated Cryptopunks. 
+
 <img src="newly_sampled_cryptopunks_trained_on_all_data.jpg" width="1000" height="550"> 
 
 
