@@ -8,10 +8,6 @@ layout: default
 
 <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script> 
 
-Here I implement a quadratic interior point method and use KKT conditions to account for constraints. We'll use this to account for quadratic objective functions and apply the method to study elastic membranes for circus tents and Markowitz Portfolio Optimization.
-
-For decades the Simplex algorithm was the only competitive method for linear optimization. One of the major shortcomings of the Simplex algorithm is that the number of steps required to solve the problem can grow exponentially with the size of the linear system. So for large linear programs, the Simplex algorithm is too computationally expensive to be a viable optimization method. Interior Point methods offer an alternative approach that have much better theoretical convergence properties.
-
 ```python  
 import numpy as np
 from scipy import linalg as la
@@ -21,7 +17,11 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 ```
 
-We can incorporate both equality and inequality constraints by implementing the KKT optimization condditions. Simply solving the KKT equations in a Primal-Dual interior point method can be too greedy, however, and this can cause us to step out of the feasible region of optimal points. So solve this, very smart people implemented the duality measure. Taking steps in directions that result in strictly decreasing duality measurers makes sure we stay in the feasible region and don't violate constraints. The following class implements an interior point routine for quadratic objective functions and allows for both equality and inequality constraints. The optimization problem becomes the following 
+Here I implement a quadratic interior point method and use KKT conditions to account for constraints. We'll use this to account for quadratic objective functions and apply the method to study elastic membranes for circus tents. 
+
+For decades the Simplex algorithm was the only competitive method for linear optimization. One of the major shortcomings of the Simplex algorithm is that the number of steps required to solve the problem can grow exponentially with the size of the linear system. So for large linear programs, the Simplex algorithm is too computationally expensive to be a viable optimization method. Interior Point methods offer an alternative approach that have much better theoretical convergence properties.
+
+We can incorporate both equality and inequality constraints by implementing the KKT optimization condditions. Simply solving the KKT equations in a Primal-Dual interior point method can be too greedy, however, and this can cause us to step out of the feasible region of optimal points. So solve this, very smart people implemented the duality measure. Taking steps in directions that result in strictly decreasing duality measures makes sure we stay in the feasible region implied by our constraints. The following class implements an interior point routine for quadratic objective functions and allows for both equality and inequality constraints. The optimization problem becomes the following 
 
 minimize 
 <p><span class="math display">\[\frac{1}{2}x^TQx+c^Tx \]</span></p> 
@@ -168,23 +168,21 @@ def qInteriorPoint(Q, c, A, b, guess, niter = 20, tol = 1e-16, verbose = False):
 
 ### Circus Tents and Elastic Membranes 
 
-We'll use this to solve a problem with elastic membranes. 
-
 Elastic membrane configurations can be described as solutions to an optimization problem. In this example we will find the shape of a large circus tent by solving a quadratic constrained optimization problem using our Interior Point method. 
 
 Imagine a large circus tent held up by a set of poles. We can model the tent by a square two-dimensional grid, where each grid point has an associated number that gives the height of the tent at that point. 
 
-At each grid point containing a tent pole, the tent height is constrained to be at least as large as the height of the tent pole. At all other grid points, the tent height is simply constrained to be greater than zero (ground height). 
+At each grid point containing a tent pole, the tent height is constrained to be at least as large as the height of the tent pole. At all other grid points, the tent height is simply constrained to be greater than zero (ground height).  
 
 We can then flatten this array to give a one-dimensional vector representation of the grid. If we let x be a one-dimensional array giving the tent height at each grid point, and L be the one-dimensional array giving the underlying tent pole structure (consisting mainly of zeros, except at the grid points that contain a tent pole), we have the linear constraint
 
 <p><span class="math display">\[x \succeq L\]</span></p>  
 
-The theory of elastic membranes claims that such materials tend to naturally minimize a quantity known as the Dirichlet energy. This quantity can be expressed as a quadratic function of the membrane. Since we have modeled our tent with a discrete grid of values, this energy function has the form
+The theory of elastic membranes claims that such materials tend to naturally minimize a quantity known as the Dirichlet Energy, which can be expressed as a quadratic function of the membrane. Since we have modeled our tent with a discrete grid of values, this energy function has the form
 
 <p><span class="math display">\[\frac{1}{2}x^THx+c^Tx \]</span></p> 
 
-where H is a particular positive semidefinite matrix closely related to Laplace's Equation, c is a vector whose entries are all equal to −(n − 1)^(−20, and n is the side length of the grid. Our circus tent is therefore given by the solution to the quadratic constrained optimization problem:
+where H is a positive semidefinite matrix closely related to Laplace's Equation, c is a vector whose entries are all equal to −(n − 1)^(−20), and n is the side length of the grid. Our circus tent is therefore given by the solution to the quadratic constrained optimization problem:
 
 minimize 
 <p><span class="math display">\[\frac{1}{2}x^THx+c^Tx \]</span></p> 
