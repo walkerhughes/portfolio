@@ -241,3 +241,4 @@ For 2010, this performed well! UConn won the national championship, Kentucky was
 The PageRank method can be extended to any number of applications, including ranking internet pages based on the hyperlinks between them, or ranking musicians based on who they have collaborated with. The ```NetworkX``` library has an efficient implementation of the PageRank algorithm that is robust to large networks, but implementing this from scratch was a fun and instructive way to better understand the inner workings of the algorithm and see a cool use case for Markov Chains. 
 
 [back](./)
+
