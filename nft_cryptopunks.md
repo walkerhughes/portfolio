@@ -92,3 +92,5 @@ while len(new_data) < 50:
 
 
 I looped through these newly generated images and compared each against all 10,000 original Cryptopunks to confirm they are unique. It’s pretty clear that the newly generated Cryptopunks are very similar to the originals, but I think this speaks more to the simplicity of the images than the quality of the model. That being said, KDEs are not to be underestimated! 
+
+[back](./)
