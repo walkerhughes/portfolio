@@ -31,7 +31,7 @@ Thus, finding the document most similar to document i is a matter of finding
 
 This is implemented in the function below. It's also worth noting that this is implicitely assuming that word frequency distributions are sufficient for comparing semantics. Other models might build on this by incorporating author-specific factors like political affiliation, time to re-election campaigns, or even macroeconomic regimes that might influence topics covered in a State of the Union speach.
 
-```python
+```python 
 def similar(i, Xhat):
     """
     Takes an index and matrix representing the principal components and returns the indices of
