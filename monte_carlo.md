@@ -17,15 +17,13 @@ import matplotlib.pyplot as plt
 
 ## Motivation
 
-Many multivariate functions like the Standard Normal Distribution's pdf cannot be symbolically integrated because their antiderivative does not exist. Quadrature methods are useful in most one-dimensional settings, but do not provide robust integrations in high-dimensions. Monte Carlo sampling provides an efficient (albeit slow) solution for high dimensional integration. 
+Many multivariate functions like the Standard Normal Distribution's PDF cannot be symbolically integrated because their antiderivative does not exist. Quadrature methods are useful in most one-dimensional settings, but do not provide robust integrations in high-dimensions. Monte Carlo sampling provides an efficient (albeit slow) solution for high dimensional integration when the antiderivative is difficult or impossible to compute.  
 
-A simple example oof how this is useful is when estimating pi. Pi is an irrational number, so its decimal expansion continues infinitely. We can still estimate it though, oone way being through Monte Carlo integration. We know the area of a circle is A = pi*r^2, where r is the circle radius. If r = 1 then, we have that the area is simply equal to pi itself. Intuitively, if we sample uniformly from a unit square centered at (0, 0), we can estimate pi as the ratio of sampled points from the unit square that fall within a circle with radius 1 inscribed in the square. Adjusting for the measure of the set we sampled from gives us our estimate. 
+A simple example of how this is useful is when estimating pi. Pi is an irrational number, so its decimal expansion continues infinitely. We can still estimate it though, one way being through Monte Carlo integration. We know the area of a circle is A = pi*r^2, where r is the circle radius. If r = 1 then, we have that the area is simply equal to pi itself. Intuitively, if we sample uniformly from a unit square centered at (0, 0), we can estimate pi as the ratio of sampled points from the unit square that fall within a circle with radius 1 inscribed in that square. Adjusting for the measure of the set we sample from gives us our estimate. 
 
-This explanation is taken from a text from the BYU ACME curriculum. 
+This explanation of Monte Carlo integration is taken from a text from the BYU ACME curriculum. 
 
-<img src="integration.jpg" width="900" height="550"> 
-
-
+<img src="integration.jpg" width="900" height="525"> 
 
 ### The n-Ball 
 
@@ -71,19 +69,18 @@ Estimated volume of a unit 4-ball is: 4.91504
 ```
 
 #### Quick Note on Errors and Convergence 
-This performed fairly well for an open unit n-Ball, but our estimates improve as we sample more points to use. Sampling more points greatly increases the temporal complexity of the routine, however. The error of this method is actually proportional to N^(-1/2), where N
-is the number of points we sample. Thus, dividing the error by 10 requires 100 times more sample points. When precision is highly important, this may be temporally prohibitive (or would require some parallelization). However, the convergence rate for Monte Carlo integration actually independent of the number of dimensions we're integrating over. Thus, the error for our estimations converges at the same rate when integrating a 2-dimensional function or a 100-dimensional function. This makes Monte Carlo integration preferable over many other machine-integration methods. 
+This performed fairly well for an open unit n-Ball, but our estimates improve as we sample more points. This greatly increases the temporal complexity of the routine, however. The error of this method is actually proportional to N^(-1/2), where N
+is the number of points we sample. Thus, dividing the error by 10 requires 100 times more sample points. When precision is highly important, this may be temporally prohibitive (or would require some parallelization). However, the convergence rate for Monte Carlo integration is actually independent of the number of dimensions we're integrating over. Thus, the error for our estimations converges at the same rate when integrating a 2-dimensional function or a 100-dimensional function. This makes Monte Carlo integration preferable over many other machine-integration methods. 
 
-That said, let's apply this to a more practical example.
+That said, let's apply this integration to a more real-world example and take a look at the convergence rate.
 
 ### Integrating the Standard Normal Probability Density Function 
 
 The Normal Distribution appears all over the place in applied mathematics, statistics, machine learning, and virtually all other quantitative fields. Yet, it has no closed-form solution for its Cumulative Distribution Function, which is the integral of its PDF. Luckily, we can use Monte Carlo for this integration. 
 
-The pdf for an n-dimensional joint Standard Normal distribution (mean of 0 and standard deviation of 1) is as follows 
+The PDF for an n-dimensional joint Standard Normal distribution (mean of 0 and standard deviation of 1) is as follows 
 
 <p><span class="math display">\[ f(x) = \frac{1}{2 \pi ^ {n/2}} e ^{-\frac{x^T x}{2}} \]</span></p> 
-
 
 I'll integrate this in 4-dimensional space on the domain [-1.5, 0.75]x[0, 1]x[0, 0.5]x[0, 1] and compare my estimates with the "true" estimates from the `scipy.stats.mvn.mvnun()` method to demonstrate how the error proportional to N^(-1/2). 
 
@@ -144,4 +141,4 @@ plt.show()
 
 
 
-
+[back](./)
