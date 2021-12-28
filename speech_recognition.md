@@ -21,7 +21,9 @@ import pickle
 from tqdm import tqdm 
 ```
 
-Speech recognition is a cool application of Hidden Markov Models when we allow the state space to be continuous rather than discrete, a subclass of models called Continuous Density Hidden Markov Models. Here I use a simple implementation of one type of these, the Gaussian Mixture Model Hidden Markov Model, to classify audio clips of 5 different words.  
+Speech recognition is a cool application of Hidden Markov Models when we allow the state space ini the model to be continuous rather than discrete, a subclass of models called Continuous Density Hidden Markov Models. Here I use a simple implementation of one type of these, the Gaussian Mixture Model Hidden Markov Model, to classify audio clips of 5 different words. 
+ 
+<p>(Background information on Hidden Markov Models can be found <a href="https://en.wikipedia.org/wiki/Hidden_Markov_model">here</a>)</p>
 
 This type of model essentially amounts to estimating a mixture of Gaussians. This is a distribution composed as a linear combination of M Gaussian (or Normal) distributions, one for each state in the state space. Here we will try to classify sound bits of 5 different words being said, so we will take M = 5. Our model then becomes: 
 
