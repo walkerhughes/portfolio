@@ -70,7 +70,7 @@ of GMMHMMs, one for each word. For a new speech signal, after decomposing it
 into its MFCC array, we can score the signal against each GMMHMM, returning the word whose
 GMMHMM scored the highest. 
 
-Below we extract the MFCC's for each of our words and store them in a dictionary for easy retrieval. 
+Below we extract the MFCC's for each of our words and store them in a dictionary for easy retrieval. Our sound clips are short enough in this example that we can treat the sound signals as constants, which is useful, but likely not robust enough for a deployable model. 
 
 ```python 
 # skip the repeats, keep the mels in mels dict 
