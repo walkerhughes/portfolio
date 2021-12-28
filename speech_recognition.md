@@ -21,11 +21,9 @@ import pickle
 from tqdm import tqdm 
 ```
 
-Speech recognition is a cool application of Hidden Markov Models when we allow the state space ini the model to be continuous rather than discrete, a subclass of models called Continuous Density Hidden Markov Models. Here I use a simple implementation of one type of these, the Gaussian Mixture Model Hidden Markov Model, to classify audio clips of 5 different words. 
- 
-<p>(Background information on Hidden Markov Models can be found <a href="https://en.wikipedia.org/wiki/Hidden_Markov_model">here</a>)</p>
+Speech recognition is a cool application of Hidden Markov Models when we allow the state space in the model to be continuous rather than discrete, a subclass of models called Continuous Density Hidden Markov Models. Here I use a simple implementation of one type of these, the Gaussian Mixture Model Hidden Markov Model, to classify audio clips of 5 different words. <p>(Background information on Hidden Markov Models can be found <a href="https://en.wikipedia.org/wiki/Hidden_Markov_model">here</a>)</p>
 
-This type of model essentially amounts to estimating a mixture of Gaussians. This is a distribution composed as a linear combination of M Gaussian (or Normal) distributions, one for each state in the state space. Here we will try to classify sound bits of 5 different words being said, so we will take M = 5. Our model then becomes: 
+This type of Markov Model essentially amounts to estimating a mixture of Gaussians. This is a distribution composed of a linear combination of M Gaussian (or Normal) distributions, one for each state in the state space. Here we will try to classify sound bits of 5 different words being said, so we will take M = 5. Our model then becomes: 
 
 <p><span class="math display">\[f(x) = \sum_{i = 1} ^{M} c_i N(x; \mu_i, \Sigma_i)\]</span></p> 
 
@@ -67,7 +65,7 @@ def sample_gmmhmm(gmmhmm, num_samples):
 
 Many speech recognition models don't actually recognize words, they recognize the distinct sounds produced by a language, which are called phonemes. English has 44 unique phonemes, and thus each word can be represented as a combination of some subset of these 44 sounds. A robust speech recognition model could have 44 distinct GMMHMMs, one for each distinct phoneme. 
 
-Before we can go further, audio data takes a good amount of pre-processing, and we will be representing each audio clip by its mel-frequency cepstral coefficients (MCFFs). We can train a GMMHMM on various audio clips or MFCCs for a given word, and by doing this for several words, we form a collection
+Before we can go further, audio data takes a good amount of pre-processing, and we will be representing each audio clip by its mel-frequency cepstral coefficients (MCFFs). These numerically respresent short-term clips of audio in terms of their sound frequencies and aree often found through the Fourier Transform. We can train a GMMHMM on various audio clips or MFCCs for a given word, and by doing this for several words, we form a collection
 of GMMHMMs, one for each word. For a new speech signal, after decomposing it
 into its MFCC array, we can score the signal against each GMMHMM, returning the word whose
 GMMHMM scored the highest. 
