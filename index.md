@@ -50,7 +50,7 @@ Below are some of my recent projects with a few research papers from my undergra
 
 > [A Simple Statistical Arbitrage Model for Pairs Trading](./pairs_trading.html)  
 
-> [The Effects of COVID-19 Super Spreader Events with Synthetic Controls (Research Paper)](./synth.html) 
+> [Analyzing the Effects of Super Spreader Events on COVID-19 Infection Rates with Synthetic Controls (Research Paper)](./synth.html) 
 
 > <p><a href="./optimal_control_portfolio_allocation.pdf">Optimal Control Portfolio Optimization with Dynamic Risk Tolerances (Research Paper)</a></p>
 
