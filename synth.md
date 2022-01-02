@@ -7,7 +7,7 @@ layout: default
 
 <p>Check out my full report on this with other identification strategies <a href="./econ488.pdf">here</a></p> 
 
-#### What is a synthetic control anyway? 
+### What is a synthetic control anyway? 
 
 Control groups are a key part of any scientific study when we want to see the effect of a 'treatment' relative to a specific group. In medicine, this could take the form of a randomized trial where one half of the study group is given medicine and the other half is given a placebo. We call the medicine group the 'treated group' and the placebo group the control. The control group allows us to see the effect of the treatment in the counterfactual state of never having received the medicine. The key assumption here is that both the treatment and conntrol groups are similar to each other on other observable characteristics and only differ on the basis of receiving the medicine or not. 
 
