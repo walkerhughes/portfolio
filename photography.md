@@ -13,4 +13,4 @@ layout: default
 <img src="spanish_moss_2.jpg" width="1250" height="650">     
 
 
-<img src="meadow.jpg" width="1250" height="1250">     
+<img src="meadow.jpg" width="1250" height="650">     
