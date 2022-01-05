@@ -17,7 +17,7 @@ from sklearn.model_selection import ParameterGrid
 from sklearn.ensemble import GradientBoostingClassifier  
 ```
 
-## Background On Dimension Reduction 
+## Background On Dimension Reduction (full commentary coming soon!) 
 
 High-dimensional data can be difficult to work with, both because it may take a long time to train a model with, and because many algorithms may suffer from the Curse of Dimensionality (many that rely on Euclidean distance or other similar metrics, and there's a lot of these, are especially vulnerable, since "distance" becomes less meaningful in very high dimensions).   
 
