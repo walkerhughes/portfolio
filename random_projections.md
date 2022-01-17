@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## Random Dimension Reductions 
+## Random Dimension Reduction of High-Dimensional Data 
 
 <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script> 
 
@@ -19,13 +19,16 @@ from sklearn.ensemble import GradientBoostingClassifier
 
 ## Background On Dimension Reduction (full commentary coming soon!) 
 
-High-dimensional data can be difficult to work with, both because it may take a long time to train a model with, and because many algorithms may suffer from the Curse of Dimensionality (many that rely on Euclidean distance or other similar metrics, and there's a lot of these, are especially vulnerable, since "distance" becomes less meaningful in very high dimensions).   
+High-dimensional data can be difficult to work with, both because it may take a long time to train a model with, and because many algorithms may suffer from the Curse of Dimensionality, which happens when data become very sparse in high dimensions rendering distance metrics unuseful. This is common with algorithms and models that rely on Euclidean distance for example, which is common in ML. Dimension reduction helps aleviate these troubles by projecting high-dimensional data into lower-dimensional representations, making modeling more computationally tractable and minimizing the effects of the Curse of Dimensionality.  
 
 Principle Component techniques are very useful because they can project a data matrix to lower dimensions while allowing the user to view how much variance from the original data is preserved in this operation. Variance here is valuable information. This is done through the SVD of the data matrix, and is a linear dimension reduction. 
 
 But other methods exist too, and can perform such dimension reduction randomly. I'll use one such method, the Johnson-Lindenstrauss method, and compare it to model accuracy for a ```GradientBoostingClassifier``` with unprojected data and PCA projected data. 
 
-Let's make sure we understand the Johnson-Lindenstrauss method first, which relies on the Johnson-Lindenstrauss lemma stated below. 
+Let's make sure we understand the Johnson-Lindenstrauss method first, which relies on the Johnson-Lindenstrauss lemma stated below. This states that any n data points can be projected into k dimensions where 
+
+<p><span class="math display">\[k \geq O(log(\frac{n}{\epsilon^2}))\]</span></p> 
+
 
 
 
