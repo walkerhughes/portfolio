@@ -30,6 +30,8 @@ Let's make sure we understand the Johnson-Lindenstrauss method first, which reli
 <p><span class="math display">\[k \geq O(log(\frac{n}{\epsilon^2}))\]</span></p> 
 
 
+<img src="jl_lemma.jpg" width="975" height="325">
+
 
 
 ```python
