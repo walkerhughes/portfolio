@@ -16,7 +16,7 @@ Here I implement the Lorenz equations:
 
 where x_t indicates the derivative of x with respect to t, and σ, ρ, and β are constants. 
 
-For appropriately chosen values of σ, ρ, and β, Lorenz found that the solution to these equations did not tend to a fixed point, nor did the system tend to toward infnity either. Lorenz came to refer to this phenomena as chaotic behavior, and described how the system exhibited a "strange attractor" that the solutions converged to. 
+For appropriately chosen values of σ, ρ, and β, Lorenz found that the solution to these equations did not tend to a fixed point, nor did the system tend toward infnity either. Lorenz came to refer to this phenomena as chaotic behavior, and described how the system exhibited a "strange attractor" that the solutions converged to. 
 
 Here we'll let σ=10, ρ=28, and β=8/3 and use `scipy.integrate.odeint` to compute the solution.
 

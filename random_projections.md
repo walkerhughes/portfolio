@@ -17,7 +17,7 @@ from sklearn.model_selection import ParameterGrid
 from sklearn.ensemble import GradientBoostingClassifier  
 ```
 
-## Background On Dimension Reduction (full commentary coming soon!) 
+## Background On Dimension Reduction (full commentary coming soon!)  
 
 High-dimensional data can be difficult to work with, both because it may take a long time to train a model with, and because many algorithms may suffer from the Curse of Dimensionality, which happens when data become very sparse in high dimensions rendering distance metrics unuseful. This is common with algorithms and models that rely on Euclidean distance for example, which is common in ML. Dimension reduction helps aleviate these troubles by projecting high-dimensional data into lower-dimensional representations, making modeling more computationally tractable and minimizing the effects of the Curse of Dimensionality.  
 
@@ -29,10 +29,7 @@ Let's make sure we understand the Johnson-Lindenstrauss method first, which reli
 
 <p><span class="math display">\[k \geq O(log(\frac{n}{\epsilon^2}))\]</span></p> 
 
-
 <img src="jl_lemma.jpg" width="975" height="200">
-
-
 
 ```python
 def jl_bound(n, eps): 
