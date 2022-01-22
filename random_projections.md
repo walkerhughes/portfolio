@@ -29,11 +29,17 @@ Let's make sure we understand the Johnson-Lindenstrauss method first, which reli
 
 <p><span class="math display">\[k \geq O(log(\frac{n}{\epsilon^2}))\]</span></p> 
 
+Intuitively, this is stating that as we project daata points down to a lower dimension, we can preserve the distance between points to within 1 +/- epsilon, a parameter that we can choose. 
+
+
+
+
 <img src="jl_lemma.jpg" width="975" height="200">
 
 ```python
 def jl_bound(n, eps): 
-    return np.ceil((24 * np.log(n)) / (3*(eps**2) - 2*(eps**3))).astype(int) 
+    # returns Johnson-Lindenstrauss bound "k" from JL Lemma 
+    return np.ceil((24 * np.log(n)) / (3*(eps**2) - 2*(eps**3))).astype(int)  
 ``` 
 
 ```python
@@ -43,7 +49,7 @@ def preserves_distance(X, A, eps):
     n, d = X.shape  
     k, d = A.shape 
 
-    # helper function to check if we are within (1 += epsilon) 
+    # helper function to check if we are within (1 +/- epsilon) 
     def helper(xi, xj, A):  
         diff = xi - xj
         lower = (1 - eps) * norm(diff, ord = 2)**2    
