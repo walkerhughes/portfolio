@@ -21,7 +21,7 @@ from scipy.sparse import linalg as spla
 
 Latent Semantic Indexing allows us to study a large corpus of text documents and determine the similarity between two documents' contents. We can represent these documents numerically with a bag of words approach. We first create an ordered set of vocabulary words used in all the documents we are interested in, then cast each document to a numeric vector where the i-th element in each vector is how many times word i appeared in that document. For a set of n documents and vocabulary of m words, this gives us an n x m matrix. 
 
-For a large set of documents and words, this matrix is likely to be both very large and sparse. We can use PCA to reduce the dimension of the data, but we don't scale the matrix in order to retain this sparsity. 
+For a large set of documents and words, this matrix is likely to be both very large and sparse. We can use PCA to reduce the dimension of the data, but we don't scale the matrix in order to retain this sparsity. There are a number of different ways that we can map text into such a matrix, 
 
 A key feature of this approach to respresenting our documents as a numeric matrix is that we have mapped the text into an inner product space, which allows us to use cosine laws on the vectors in the matrix. For a given document i, we can find the document most similar to it using cosine laws.  
 
@@ -29,7 +29,7 @@ Thus, finding the document most similar to document i is a matter of finding
 
 <p><span class="math display">\[argmax_{j\neq i} \frac{< x_i, x_j >}{||x_i|| ||x_j||} \]</span></p> 
 
-This is implemented in the function below. It's also worth noting that this is implicitely assuming that word frequency distributions are sufficient for comparing semantics. Other models might build on this by incorporating author-specific factors like political affiliation, time to re-election campaigns, or even macroeconomic regimes that might influence topics covered in a State of the Union speach.
+This is implemented in the function below, where X-hat is our matrix of words. It's also worth noting that this is implicitely assuming that word frequency distributions are sufficient for comparing semantics. Other models might build on this by incorporating author-specific factors like political affiliation, time to re-election campaigns, or even macroeconomic regimes that might influence topics covered in a State of the Union speach.
 
 ```python 
 def similar(i, Xhat):
