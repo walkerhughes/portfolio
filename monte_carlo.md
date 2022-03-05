@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## Integrating Multivariate Functions with Monte Carlo Methods
+## Integrating Multivariate Functions with Monte Carlo Simulation
 
 <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>  
 
@@ -14,14 +14,13 @@ import scipy.linalg as la
 import matplotlib.pyplot as plt 
 ```
 
-
 ## Motivation
 
 Many multivariate functions like the Standard Normal Distribution's PDF cannot be symbolically integrated because their antiderivative does not exist. Quadrature methods are useful in most one-dimensional settings, but do not provide robust integrations in high-dimensions. Monte Carlo sampling provides an efficient (albeit slow) solution for high dimensional integration when the antiderivative is difficult or impossible to compute.  
 
-A simple example of how this is useful is when estimating pi. Pi is an irrational number, so its decimal expansion continues infinitely. We can still estimate it though, one way being through Monte Carlo integration. We know the area of a circle is A = pi*r^2, where r is the circle radius. If r = 1 then, we have that the area is simply equal to pi itself. Intuitively, if we sample uniformly from a unit square centered at (0, 0), we can estimate pi as the ratio of sampled points from the unit square that fall within a circle with radius 1 inscribed in that square. Adjusting for the measure of the set we sample from gives us our estimate. 
+A simple example of how this is useful is estimating pi. Pi is an irrational number, so its decimal expansion continues infinitely. We can still estimate it though, one way being through Monte Carlo sampling. We know the area of a circle is A = pi*r^2, where r is the circle radius. If r = 1 then, we have that the area is simply equal to pi itself. Intuitively, if we sample uniformly from a unit square centered at (0, 0), we can estimate pi as the ratio of sampled points from the unit square that fall within a circle with radius 1 inscribed in that square. Adjusting for the measure of the set we sample from gives us our estimate. 
 
-This explanation of Monte Carlo integration is taken from a text from the BYU ACME curriculum. 
+This explanation of Monte Carlo integration is taken from the BYU ACME curriculum. 
 
 <img src="integration.jpg" width="900" height="525"> 
 
