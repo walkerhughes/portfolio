@@ -10,13 +10,13 @@ layout: default
 
 One primary characteristic of chaos is that small changes in initial conditions result in large changes over time in the solution curves for a dynamic system. 
 
-Here I implement the Lorenz equations: 
+Here I implement the Lorenz Equations: 
 
 <p><span class="math display">\[x_t = \sigma (y - x), y_t = \rho x - y - xz, z_t = xy - \beta z\]</span></p> 
 
 where x_t indicates the derivative of x with respect to t, and σ, ρ, and β are constants. 
 
-For appropriately chosen values of σ, ρ, and β, Lorenz found that the solution to these equations did not tend to a fixed point, nor did the system tend toward infnity either. Lorenz came to refer to this phenomena as chaotic behavior, and described how the system exhibited a "strange attractor" that the solutions converged to. 
+For appropriately chosen values of σ, ρ, and β, Lorenz found that the solution to these equations did not tend to a fixed point, nor did the system diverge to infnity either. Lorenz came to refer to this phenomena as chaotic behavior, and described how the system exhibited a "strange attractor" that the solutions converged to. 
 
 Here we'll let σ=10, ρ=28, and β=8/3 and use `scipy.integrate.odeint` to compute the solution.
 
@@ -63,7 +63,7 @@ plt.show()
 
 We can clearly see these "strange attractors" that Lorenz described, they're the big swirls in our solution curves that don't approach a specific point, but also don't diverge off to infinity. 
 
-A hallmark of chaotic systems is that the solution curve is highly dependent on the coice of initial condition, however. To show this, I'll plot three solutions to the Lorenz Equations, each with a slightly different initial condition sampled from the uniform distribution on [-15, 15]. 
+A hallmark of chaotic systems is that the solution curve is highly dependent on the coice of initial condition. To show this, I'll plot three solutions to the Lorenz Equations, each with a slightly different initial condition sampled from the uniform distribution on [-15, 15].
 
 ```python
 # init plot figure 
@@ -103,7 +103,7 @@ diverence between two solution curves, when δ(t) is small, the following approx
 
 <p><span class="math display">\[||\delta(t)|| ∼ ||\delta(0)|| e^{\lambda t}\]</span></p>  
 
-where lambda is a constant called the Lyapunov exponent. In other words, the log of δ(t) is approximately linear as a function of time, with slope lambda, so we can estimate this through linear regression. A positive Lyapunov exponent indicates chaos is present in the system. 
+where lambda is a constant called the Lyapunov exponent. In other words, the log of δ(t) is approximately linear as a function of time, with slope lambda, so we can estimate this through simple linear regression. A positive Lyapunov exponent indicates that chaos is present in the system. 
 
 ```python
 # init solution to find point in attractor 
