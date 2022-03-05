@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## Page Rank Algorithm For Setting up Your Brackets 
+## PageRank Algorithm For Setting up Your Brackets 
 
 <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script> 
 
@@ -14,9 +14,9 @@ from scipy import linalg as la
 
 ### Initial Motivation 
 
-Many real-world systems can be modeled as networks and codified as directed graphs. These are easily storable as arrays in python, and the PageRank Algorithm is a way to rank the nodes in these networks by importance. Here I implement the PageRank Algorithm to rank NCAA basketball teams going into March Madness on the basis of the teams they each played against and how many times they won or lost against each team. 
+Many real-world dynamic systems can be modeled as networks and codified as directed graphs. These are easily storable as arrays, and the PageRank Algorithm is a way to rank the nodes in these networks by importance. Here I implement the PageRank Algorithm to rank NCAA basketball teams going into March Madness on the basis of their records against other teams in the league and how those teams ranked against all other teams they played. 
 
-We’ll take the following approach, representing the outcomes of these games as an adjacency matrix A. This will list all of the N teams we are concerned with and numerically represent these pairings as an N x N array where each column and row indicates a specific team. As an example, for any two teams i and j, node-i,j in our adjacency matrix will represent the number of times that team i beat team j prior to March Madness as an integer value. Likewise, node-j,i in the adjacency matrix  will be the number of times that team j beat team i prior to March Madness. To fix the problem of “sinks” in the matrix. These are locations where a team did not play against any of the other teams in the NCAA. For example, for team i, node-i,i will be a 0, which is mathematically undesirable for our algorithm. We’ll replace any column or row where this occurs with a column or row of all ones. 
+We’ll take the following approach, representing the outcomes of these games as an adjacency matrix A. This will list all of the N teams we are concerned with and numerically represent these pairings as an N x N array where each column and row indicates a specific team. As an example, for any two teams i and j, node-i,j in our adjacency matrix will represent the number of times that team i beat team j prior to March Madness as an integer value. Likewise, node-j,i in the adjacency matrix  will be the number of times that team j beat team i prior to March Madness. We also need to address the problem of “sinks” in the matrix, or locations where a team did not play against any of the other teams in the NCAA. For example, for team i, node-i,i will be a 0, which is mathematically undesirable for our algorithm. We’ll replace any column or row where this occurs with a column or row of all ones. 
 
 We can extend our use of a simple adjacency matrix to incorporate the relative amount of wins each team had against any other.  This is done by finding the percentage of a team’s total wins represented by their wins against each of their oponents. This is meaningful since knowing if a team i is relatively more likely to win against another team j does not rely on the total number of games a team played in a season, and not all teams in our data played the same number of games.
 
