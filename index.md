@@ -2,6 +2,14 @@
 layout: default
 ---
 
+body {
+  color: blue;
+}
+
+h1 {
+  color: green;
+}
+
 ## About Me 
 
 Hi, I'm Walker. I'm a computational mathematician, economist, and San Franciscan. I finished my undergrad in April of 2021 where I completed dual majors in Applied and Computational Mathematics and Economics with a minor in Portuguese Studies. I'm trained in much of the mathematics and statistics that underpin data science, machine learning, and scientific computing, like optimization methods, sampling methods, and computational linear algebra. I like exploring new use cases for these skills though personal projects, generally using Python as my go-to language. 
