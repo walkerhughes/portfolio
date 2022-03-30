@@ -3,4 +3,7 @@ description: Walker Hughes Portfolio
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-cayman
+colors:
+    gradient_left: black
+    gradient_right: black
 
