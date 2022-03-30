@@ -5,7 +5,7 @@ google_analytics:
 theme: jekyll-theme-cayman
 
 # Colour gradient for the header
-header-colours: 
+header-colors: 
     #000000
   # right: "#8a108c"
   # left: "#cc580c"
