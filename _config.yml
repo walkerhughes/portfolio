@@ -3,7 +3,12 @@ description: Walker Hughes Portfolio
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-cayman
-colors:
-    gradient_left: black
-    gradient_right: black
 
+# Colour gradient for the header
+header-colours: 
+    #000000
+  # right: "#8a108c"
+  # left: "#cc580c"
+
+  right: "#000000"
+  left: "#000000"
